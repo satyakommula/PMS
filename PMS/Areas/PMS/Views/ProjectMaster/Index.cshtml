@@ -1,0 +1,155 @@
+﻿@using PMS.Areas.PMS.Models
+@model PMS.Areas.PMS.Models.ProjectModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listBranchCode = listFilters.Where(filter => filter.FilterType == "").ToList();
+}
+
+@using (Html.BeginForm("Index", "ProjectMaster", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="form-group ">
+        <div class="row ml-4 mt-4">
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Branch Code</label>
+                    <div class="col-8">
+                        @*<select id="ddlBranchCode" class="form-control" required>
+                                @foreach (var entity in listBranchCode)
+                                {
+                                    <option>@entity.FilterName</option>
+                                }
+                            </select>*@
+                        @Html.DropDownListFor(model => model.BranchCode, new SelectList(
+    listBranchCode,
+    "FilterCode",
+    "FilterName",
+    Model.BranchCode), "Select Branch Code", new { @class = "form-control", @required = true })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="row form-group float-right ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Branch Location</label>
+                    <div class="col-8">
+
+                        @Html.TextBoxFor(model => model.BranchLocation, new { @class = "form-control", @required = true })
+                        @*<input type="text" class="form-control" placeholder="Branch Location">*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ml-4 mt-1">
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Division</label>
+                    <div class="col-8">
+                        <select id="ddlBranchCode" class="form-control" required>
+                            @foreach (var entity in listBranchCode)
+                            {
+                                <option>@entity.FilterName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="control-label col-4" for="ddlBranchCode">Project Type</label>
+                    <div class="col-8">
+                        <select id="ddlBranchCode" class="form-control" required>
+                            @foreach (var entity in listBranchCode)
+                            {
+                                <option>@entity.FilterName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Type of Service</label>
+                    <div class="col-8">
+                        <select id="ddlBranchCode" class="form-control" required>
+                            @foreach (var entity in listBranchCode)
+                            {
+                                <option>@entity.FilterName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group ml-4 mt-1">
+            <label class="control-label col-2" for="txtProjectName">Project Name</label>
+            <div class="col-10 float-left ">
+                <input type="text" id="txtProjectName" class="form-control maxw-100 float-left" placeholder="Project Name">
+            </div>
+        </div>
+        <div class="row ml-4 mt-4">
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="txtWorkOrderNo">Work Order No. </label>
+                    <div class="col-8">
+                        @*<select id="ddlBranchCode" class="form-control" required>
+                                @foreach (var entity in listBranchCode)
+                                {
+                                    <option>@entity.FilterName</option>
+                                }
+                            </select>*@
+                        @Html.TextBoxFor(model => model.WorkOrderNo, new { @id = "txtWorkOrderNo", @class = "form-control", @required = true })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="row form-group float-right ">
+                    <label class="col-form-label col-4" for="dtpWorkOrderDate">Work OrderDate</label>
+                    <div class="col-8">
+
+                        @Html.TextBoxFor(model => model.WorkOrderDate, new { type = "date", @id = "dtpWorkOrderDate", @class = "form-control", @required = true })
+                        @*<input type="text" class="form-control" placeholder="Branch Location">*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ml-4 mt-4">
+            <div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="txtWorkOrderValue">Work Order Value </label>
+                    <div class="col-8">
+                        @*<select id="ddlBranchCode" class="form-control" required>
+                                @foreach (var entity in listBranchCode)
+                                {
+                                    <option>@entity.FilterName</option>
+                                }
+                            </select>*@
+                        @Html.TextBoxFor(model => model.WorkOrderValue, new { @id = "txtWorkOrderValue", @class = "form-control", @required = true })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="row form-group float-right ">
+                    <label class="col-form-label col-4" for="flWorkOrderPath">Upload WorkOrder</label>
+                    <div class="col-8">
+
+                        @Html.TextBoxFor(model => model.WorkOrderPath, new { type = "file", @id = "flWorkOrderPath" })
+                        @*<input type="text" class="form-control" placeholder="Branch Location">*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="">
+        <button class="btn  btn-primary  text-uppercase btn-default mt-2" type="submit">Save</button>
+    </div>
+}
+<script src="~/Assets/Scripts/ProjectMaster.js"></script>

@@ -1,0 +1,37 @@
+﻿$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+    $('.mainli').on('click', function () {
+        $('.mainli').removeClass('active');
+        $('.subli').removeClass('active');
+        $(this).addClass('active');
+    });
+
+
+    $('.subli').on('click', function () {
+        $('.mainli').removeClass('active');
+        $('.subli').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    var url = window.location.href;
+    if (url.indexOf("PMS/Resume") != -1) {
+
+        if (url.indexOf("/Resume/SearchResume") != -1) {
+            $("#aresumeDatabase").click();
+          //  $("#aresumeDatabase").toggle();
+            $("li").removeClass("active");
+            $("#resumeSubmenu").addClass("show");
+            $("#lisearchresume").addClass("active");
+        }
+        else {
+            $("#aresumeDatabase").click();
+            $("li").removeClass("active");
+            $("#resumeSubmenu").addClass("show");
+            $("#linewresume").addClass("active");
+
+        }
+    }
+
+});

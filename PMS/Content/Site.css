@@ -1,0 +1,120 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    min-width: 200px;
+}
+
+label
+ {
+    width: 120px;
+    min-width: 100px;
+}
+
+.bg-color-orange {
+    background-color: #f7890e
+}
+
+.text-color-orange {
+    color: #f7890e
+}
+
+.text-color-darkgray {
+    color: #253746
+}
+
+.h-10 {
+    height: 10% !important;
+}
+
+.h-15 {
+    height: 15% !important;
+}
+
+.h-80 {
+    height: 80% !important;
+}
+
+.h-5 {
+    height: 5% !important;
+}
+
+.bg-color-gray {
+    background-color: #c8c6c6
+}
+
+.bg-color-darkgray {
+    background-color: #253746
+}
+
+.text-color-thickgray {
+    color: #191919;
+}
+
+.displayblock {
+    display: block !important;
+}
+
+.maxw-100 {
+    max-width: 100% !important;
+}
+
+.nobgcolor {
+    background-color: transparent !important;
+}
+
+.noborder {
+    border: none !important;
+}
+
+.linkfixedwidth-120 {
+    width: auto !important;
+    max-width:150px;
+}
+
+
+.btn-width-50 {
+    width: 50px;
+    min-width: 50px;
+}
+
+
+.minw-150 {
+    min-width: 180px !important;
+}
+
+.label-80f {
+    width: 80px !important;
+    min-width: 80px !important;
+}
+
+.maxw-180 {
+    max-width: 180px !important;
+}
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+

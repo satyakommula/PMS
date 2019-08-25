@@ -1,0 +1,46 @@
+﻿@using PMS.Areas.PMS.Models
+@model ReportsSearchModel
+@{
+    ViewBag.Title = "Search Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listDepartment = listFilters.Where(filter => filter.FilterType == "Department").ToList();
+}
+
+<link href="~/Assets/Styles/jquery-ui.css" rel="stylesheet" />
+<link href="~/Assets/Styles/ui.jqgrid.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/Jqgrid/jquery.js"></script>
+<script src="~/Assets/Scripts/Jqgrid/Jqgrid.js"></script>
+<div class="row ml-4 mt-4">
+
+    <div class="col-12">
+        <div class="row form-group ">
+            <label class="col-form-label col-2">Search By</label>
+            <div class="col-3">
+                @Html.TextBoxFor(M => M.ProjectCode, new { @class = "form-control", @placeholder = "Project Code" })
+            </div>
+            <div class="col-3">
+                @Html.DropDownListFor(M => M.Department, new SelectList(listDepartment, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @placeholder = "Design" })
+            </div>
+            <div class="col-3">
+                @Html.TextBoxFor(M => M.ReportNo, new { @class = "form-control", @placeholder = "Letter No" })
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row form-group ">
+            <div class="col-3">
+                @Html.TextBoxFor(model => model.ReportTitle, new { @class = "form-control", @required = true, @placeholder = "keyword" })
+            </div>
+            <div class="col-3">
+                <input type="button" id="btnSearch" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="w-100 m-1">
+        <table id="jqGrid" class="w-100"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+<script src="~/Assets/Scripts/Reports.js"></script>

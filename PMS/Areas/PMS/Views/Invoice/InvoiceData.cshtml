@@ -1,0 +1,86 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblInvoiceData
+@{
+    ViewBag.Title = "Invoice To Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listInvoice = listFilters.Where(filter => filter.FilterType == "TypeOfInvoice").ToList();
+}
+
+<form id="InvoiceForm">
+    <div class="row ml-4 mt-4 background">
+        <div class="col-12">
+            <div class="row form-group mt-3">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.ProjectCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Project Code" })
+                </div>
+                <div class="col-8">
+                    @Html.TextBoxFor(model => model.ProjectName, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Project Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.DropDownListFor(M => M.TypeOfInvoice, new SelectList(listInvoice, "FilterCode", "FilterName"), "Select Invoice", new { @class = "form-control", @required = true, @placeholder = "TypeOfInvoice" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Description, new { type = "string", @class = "form-control", @required = true, @placeholder = "Description" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceNo, new { @class = "form-control", @required = true, @placeholder = "Invoice No." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceAmount, new { @class = "form-control", @required = true, @placeholder = "Invoice Amt Rs." })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.CGSTAmount, new { @class = "form-control", @required = true, @placeholder = "CGST Rs." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.SGSTAmount, new { @class = "form-control", @required = true, @placeholder = "SGST Rs." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.IGST, new { @class = "form-control", @required = true, @placeholder = "IGST" })
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group mb-0">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.TotalInvoiceAmount, new { @class = "form-control", @required = true, @placeholder = "Total Invoice Amt" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @required = true, @placeholder = "Enter Remarks / Status of Invoice" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">@Model.FileName</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,15 @@
+﻿@model PMS.Areas.PMS.Models.EducationModel
+<div class="row divQualification">
+
+    <div class="col-4">
+        @Html.DropDownListFor(model => model.Qualification, new SelectList(Model.ListQualifications, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true, @placeholder = "Qualification" })
+
+    </div>
+    <div class="col-4">
+        @Html.TextBoxFor(model => model.University, new { @class = "form-control", @required = true, @placeholder = "Institution/University" })
+
+    </div>
+    <div class="col-4">
+        @Html.TextBoxFor(model => model.Year, new {  @class = "form-control", @required = true, @placeholder = "Year of completion" })
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model PMS.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    ViewBag.ReturnUrl = Request["ReturnUrl"];
+}
+
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/modernizr")
+<body class="p-0 m-0">
+    <div style="height:500px;width:500px" class="text-center align-content-center">
+        <div style="height:300px;width:300px;position: absolute; left: 0; top: 0;background-color:gray;border-radius:50%">
+       
+        </div>
+        <div style="height:300px;width:300px; filter:contrast(200%);position: absolute; left: 150px; top: 150px;background-color:orange;border-radius:50%">
+
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendoui")
+</body>

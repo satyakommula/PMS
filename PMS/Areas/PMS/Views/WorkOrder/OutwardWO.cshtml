@@ -1,0 +1,208 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblOutwardWO
+@{
+    ViewBag.Title = "OutwardWO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listDivision = listFilters.Where(filter => filter.FilterType == "Division").ToList();
+    var listProjectType = listFilters.Where(filter => filter.FilterType == "ProjectType").ToList();
+    var LISTTypeofService = listFilters.Where(filter => filter.FilterType == "TypeofService").ToList();
+}
+
+<form id="formOutwardWO">
+
+    <input type="hidden" id="hdnWorkOrderFileName" value="@Model.WOFileName">
+    <input type="hidden" id="hdnWorkOrderFilePath" value="@Model.WOFilePath">
+    <input type="hidden" id="hdnVendor1FileName" value="@Model.VendorFileName1">
+    <input type="hidden" id="hdnVendor1FilePath" value="@Model.VendorFilePath1">
+    <input type="hidden" id="hdnVendor2FileName" value="@Model.VendorFileName2">
+    <input type="hidden" id="hdnVendor2FilePath" value="@Model.VendorFilePath2">
+    <input type="hidden" id="hdnVendor3FileName" value="@Model.VendorFileName3">
+    <input type="hidden" id="hdnVendor3FilePath" value="@Model.VendorFilePath3">
+
+
+    <div class="row ml-4 mt-4">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Branch Code</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.BranchCode, new { @class = "form-control ", @required = true })
+                </div>
+                <label class="col-form-label col-2" for="">Branch Location</label>
+                <div class="col-4">
+
+                    @Html.TextBoxFor(model => model.BranchLocation, new { @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="row col-12">
+            <div class="row form-group col-4 ml-0">
+                <label class="ml-0 mt-2" for="Division">Division</label>
+                <div class="">
+                    @Html.DropDownListFor(M => M.Division, new SelectList(listDivision, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180" @*, @required = true*@                                                            /**/
+                                                                                                                                                                                                                                                                 /**/
+                                                                                                                                                                                                                                                                 /**/
+                                                                                                                                                                                                                                                                 /**/
+                                                                                                                                                                                                                                                                 ,
+                   @placeholder = "Division"
+               })
+
+                </div>
+            </div>
+            <div class="row form-group col-4 ml-2">
+                <label class="mt-2" for="ProjectType">Project Type</label>
+                <div class="">
+                    @Html.DropDownListFor(M => M.ProjectType, new SelectList(listProjectType, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180" @*, @required = true*@                                                            /**/
+                                                                                                                                                                                                                                                                       /**/
+                                                                                                                                                                                                                                                                       /**/
+                                                                                                                                                                                                                                                                       /**/
+                                                                                                                                                                                                                                                                       ,
+                   @placeholder = "Project Type"
+               })
+
+                </div>
+            </div>
+            <div class="row form-group col-4 ml-2">
+                <label class="mt-2" for="TypeofService">Type of Service</label>
+                <div class="ml-3">
+                    @Html.DropDownListFor(M => M.TypeofService, new SelectList(LISTTypeofService, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180" @*, @required = true*@                                                            /**/
+                                                                                                                                                                                                                                                                           /**/
+                                                                                                                                                                                                                                                                           /**/
+                                                                                                                                                                                                                                                                           /**/
+                                                                                                                                                                                                                                                                           ,
+                   @placeholder = "Type of Service"
+               })
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Project Code</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.RelatedProjectCode, new { @class = "form-control ", @required = true })
+                </div>
+                <label class="col-form-label col-2" for="">Project Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.ProjectName, new { @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Vendor Code</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorCode, new { @class = "form-control", @required = true })
+                </div>
+                <label class="col-form-label col-2" for="">Vendor Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorId, new { @class = "form-control ", @required = true })
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Work Order No.</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WorkOrderNo, new { @class = "form-control ", @required = true, @placeholder = "Enter WO no" })
+                </div>
+                <label class="col-form-label col-2" for="">Work OrderDate</label>
+                <div class="col-4">
+
+                    @Html.TextBoxFor(model => model.WorkOrderDate, new {type="date", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Description of WO</label>
+                <div class="col-6">
+                    @Html.TextBoxFor(model => model.DescriptionofWO, new { @class = "form-control ", @required = true, @placeholder = "Enter" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Work Order Value </label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WorkOrderValue, new { @id = "", @class = "form-control", @required = true, @placeholder = "Rs." })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="flWorkOrderPath">Upload </label>
+                <div class="col-4">
+
+                    @Html.TextBoxFor(model => model.WorkOrderFile, new { type = "file", @id = "flWorkOrderPath" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Vendor Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorName1, new { @class = "form-control ", @required = true, @placeholder = "Enter Name" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Vendor1File, new { type = "file" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Vendor Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorName2, new { @class = "form-control ", @required = true, @placeholder = "Enter Name" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Vendor2File, new { type = "file" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Vendor Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorName3, new { @class = "form-control ", @required = true, @placeholder = "Enter Name" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Vendor3File, new { type = "file" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label"></label>
+        </div>
+        <div class="col-3">
+            <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+        </div>
+    </div>
+</form>
+<script src="~/Assets/Scripts/Outward.js"></script>

@@ -1,0 +1,45 @@
+﻿@using PMS.Areas.PMS.Models
+@model InwardSearchModel
+@{
+    ViewBag.Title = "SearchInward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+}
+
+<link href="~/Assets/Styles/jquery-ui.css" rel="stylesheet" />
+<link href="~/Assets/Styles/ui.jqgrid.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/Jqgrid/jquery.js"></script>
+<script src="~/Assets/Scripts/Jqgrid/Jqgrid.js"></script>
+<div class="row ml-4 mt-4">
+
+    <div class="col-12">
+        <div class="row form-group ">
+            <label class="col-form-label col-2">Search By</label>
+            <div class="col-3">
+                @Html.TextBoxFor(M => M.ProjectCode, new { @class = "form-control", @placeholder = "Project Code" })
+            </div>
+            <div class="col-3">
+                @Html.TextBoxFor(M => M.BranchCode, new { @class = "form-control", @placeholder = "Branch Code" })
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row form-group ">
+            <div class="col-3">
+                @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control", @required = true, @placeholder = "Client Name" })
+            </div>
+            <div class="col-3">
+                @Html.TextBoxFor(model => model.WorkOrderNo, new { @class = "form-control", @required = true, @placeholder = "WorkOrderNo" })
+            </div>
+            <div class="col-3">
+                <input type="button" id="btnSearchInward" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="w-100 m-1">
+        <table id="jqGrid" class="w-100"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+<script src="~/Assets/Scripts/WorkOrder.js"></script>

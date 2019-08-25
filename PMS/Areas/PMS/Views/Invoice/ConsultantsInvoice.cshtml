@@ -1,0 +1,88 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblInvoiceConsultant
+@{
+    ViewBag.Title = "Consultants Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="InvoiceForm">
+    <div class="row ml-4 mt-4 background">
+        <div class="col-12">
+            <div class="row form-group mt-3">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WorOrderCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Work Order Code" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorCode, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Vendor Code" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.NameOfConsultant, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Name Of Consultant" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.ProjectCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Project Code" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.DetailsOfWorkdone, new { type = "string", @class = "form-control", @required = true, @placeholder = "Details Of Workdone" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceNo, new { @class = "form-control", @required = true, @placeholder = "Invoice No." })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceAmount, new { @class = "form-control", @required = true, @placeholder = "Invoice Amt Rs." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.CGSTAmount, new { @class = "form-control", @required = true, @placeholder = "CGST Rs." })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.SGSTAmount, new { @class = "form-control", @required = true, @placeholder = "SGST Rs." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.IGST, new { @class = "form-control", @required = true, @placeholder = "IGST" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.TotalInvoiceAmount, new { @class = "form-control", @required = true, @placeholder = "Total Invoice Amt" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group mb-0">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.InvoiceAmtAccepted, new { @class = "form-control", @required = true, @placeholder = "Invoice Amount Accepted" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @required = true, @placeholder = "Enter Remarks / Status of Invoice" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label">@Model.FileName</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

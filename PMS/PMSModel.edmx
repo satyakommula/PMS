@@ -1,0 +1,1682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBGsData">
+          <Key>
+            <PropertyRef Name="BGsId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BGsId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TypeOfService" Type="nvarchar" MaxLength="500" />
+          <Property Name="WONo" Type="nvarchar" MaxLength="500" />
+          <Property Name="WODate" Type="datetimeoffset" Precision="7" />
+          <Property Name="TypeOfBG" Type="int" />
+          <Property Name="WOValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="NameOfBeneficiary" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="500" />
+          <Property Name="BGNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="BGDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="BGEffectiveDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDateOfClaim" Type="datetimeoffset" Precision="7" />
+          <Property Name="BGValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="IssuingBank" Type="nvarchar" MaxLength="500" />
+          <Property Name="IssuingBranch" Type="nvarchar" MaxLength="500" />
+          <Property Name="IssuingAddress" Type="nvarchar" MaxLength="1500" />
+          <Property Name="BeneficiaryBank" Type="nvarchar" MaxLength="500" />
+          <Property Name="BeneficiaryBranch" Type="nvarchar" MaxLength="500" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="IFSCCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReferenceContract" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ValidDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ValidTo" Type="datetimeoffset" Precision="7" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblCorrespondence">
+          <Key>
+            <PropertyRef Name="CorrespondenceId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CorrespondenceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CorrespondenceType" Type="int" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department" Type="int" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FromName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FromDesignation" Type="nvarchar" MaxLength="500" />
+          <Property Name="FromOrganisation" Type="nvarchar" MaxLength="500" />
+          <Property Name="FromAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToDesignation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToOrganisation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="CopyToName" Type="nvarchar" MaxLength="500" />
+          <Property Name="CopyToDesignation" Type="nvarchar" MaxLength="500" />
+          <Property Name="CopyToOrganisation" Type="nvarchar" MaxLength="500" />
+          <Property Name="CopyToAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="LetterNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="LetterDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Reference1" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReferenceDate1" Type="datetimeoffset" Precision="7" />
+          <Property Name="Reference2" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReferenceDate2" Type="datetimeoffset" Precision="7" />
+          <Property Name="Reference3" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReferenceDate3" Type="datetimeoffset" Precision="7" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceivedThrough" Type="int" />
+          <Property Name="ReceivedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EmailID1" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmailID2" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmailID3" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceivedType" Type="int" />
+          <Property Name="ReceivedDate1" Type="datetimeoffset" Precision="7" />
+          <Property Name="ReceivedBy1" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceivedDate2" Type="datetimeoffset" Precision="7" />
+          <Property Name="ReceivedBy2" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblDrawing">
+          <Key>
+            <PropertyRef Name="DrawingId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DrawingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department" Type="int" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="DrawingNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="DrawingDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="DrawingTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="Chainage" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateOfSubmission" Type="datetimeoffset" Precision="7" />
+          <Property Name="SubmittedTo" Type="nvarchar" MaxLength="500" />
+          <Property Name="SoftHardCopy" Type="nvarchar" MaxLength="50" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="ViaEmailLetter" Type="nvarchar" MaxLength="500" />
+          <Property Name="OtherDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="RevisionNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="RevisionDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="OtherSubmittedTo" Type="nvarchar" MaxLength="100" />
+          <Property Name="OtherSoftHardCopy" Type="nvarchar" MaxLength="50" />
+          <Property Name="OtherFilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="OtherFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ApprovalDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblEducation">
+          <Key>
+            <PropertyRef Name="EducationId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ResumeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Qualification" Type="varchar" MaxLength="500" />
+          <Property Name="University" Type="varchar" MaxLength="500" />
+          <Property Name="Year" Type="varchar" MaxLength="50" />
+          <Property Name="Course" Type="varchar" MaxLength="500" />
+          <Property Name="Specialisation" Type="varchar" MaxLength="500" />
+          <Property Name="EducationType" Type="int" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PMS.dbo.tblFilters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblFilters">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FilterCode" />
+            <PropertyRef Name="FilterName" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilterCode" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="FilterName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="FilterType" Type="varchar" MaxLength="300" />
+          <Property Name="FilterEnable" Type="bit" />
+          <Property Name="ParentFilterCode" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="tblInvoiceConsultant">
+          <Key>
+            <PropertyRef Name="InvoiceConsultantId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceConsultantId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorOrderCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="VendorCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="WorOrderName" Type="nvarchar" MaxLength="500" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="500" />
+          <Property Name="DetailsOfWorkdone" Type="nvarchar" MaxLength="1500" />
+          <Property Name="NameOfConsultant" Type="nvarchar" MaxLength="500" />
+          <Property Name="ConsultantInvoiceNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="InvoiceAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="InvoiceDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="CGSTAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="SGSTAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="IGST" Type="nvarchar" MaxLength="100" />
+          <Property Name="TotalInvoiceAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="InvoiceAmtAccepted" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblInvoiceData">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="TypeOfInvoice" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="InvoiceAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="InvoiceDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="CGSTAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="SGSTAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="IGST" Type="nvarchar" MaxLength="100" />
+          <Property Name="TotalInvoiceAmount" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblInwardWO">
+          <Key>
+            <PropertyRef Name="WOId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WOId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BranchCode" Type="varchar" MaxLength="100" />
+          <Property Name="BranchLocation" Type="varchar" MaxLength="100" />
+          <Property Name="Division" Type="int" />
+          <Property Name="ProjectType" Type="int" />
+          <Property Name="TypeofService" Type="int" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="500" />
+          <Property Name="WorkOrderNo" Type="varchar" MaxLength="100" />
+          <Property Name="WorkOrderDate" Type="datetime" />
+          <Property Name="WorkOrderValue" Type="varchar" MaxLength="100" />
+          <Property Name="WOPath" Type="varchar" MaxLength="1000" />
+          <Property Name="ClientName" Type="varchar" MaxLength="100" />
+          <Property Name="Address1" Type="varchar" MaxLength="500" />
+          <Property Name="Address2" Type="varchar" MaxLength="500" />
+          <Property Name="State" Type="varchar" MaxLength="100" />
+          <Property Name="PinCode" Type="varchar" MaxLength="100" />
+          <Property Name="ContactPerson1" Type="varchar" MaxLength="100" />
+          <Property Name="ContactPerson2" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile2" Type="varchar" MaxLength="100" />
+          <Property Name="Email1" Type="varchar" MaxLength="100" />
+          <Property Name="Email2" Type="varchar" MaxLength="100" />
+          <Property Name="InvoiceName" Type="varchar" MaxLength="100" />
+          <Property Name="BilligAddress1" Type="varchar" MaxLength="500" />
+          <Property Name="BillingAddress2" Type="varchar" MaxLength="500" />
+          <Property Name="BillingState" Type="varchar" MaxLength="100" />
+          <Property Name="BillingPiCode" Type="varchar" MaxLength="100" />
+          <Property Name="GSTIN" Type="varchar" MaxLength="100" />
+          <Property Name="PAN" Type="varchar" MaxLength="50" />
+          <Property Name="Other" Type="varchar" MaxLength="50" />
+          <Property Name="ScopeofService" Type="varchar" MaxLength="500" />
+          <Property Name="ProjectCode" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblOutwardWO">
+          <Key>
+            <PropertyRef Name="WOId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WOId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BranchCode" Type="varchar" MaxLength="100" />
+          <Property Name="BranchLocation" Type="varchar" MaxLength="100" />
+          <Property Name="Division" Type="int" />
+          <Property Name="ProjectType" Type="int" />
+          <Property Name="TypeofService" Type="int" />
+          <Property Name="RelatedProjectCode" Type="varchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="500" />
+          <Property Name="VendorId" Type="uniqueidentifier" />
+          <Property Name="VendorCode" Type="varchar" MaxLength="100" />
+          <Property Name="WorkOrderNo" Type="varchar" MaxLength="100" />
+          <Property Name="WorkOrderDate" Type="datetime" />
+          <Property Name="DescriptionofWO" Type="varchar" MaxLength="500" />
+          <Property Name="WorkOrderValue" Type="varchar" MaxLength="100" />
+          <Property Name="WOFilePath" Type="varchar" MaxLength="1000" />
+          <Property Name="WOFileName" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorName1" Type="varchar" MaxLength="100" />
+          <Property Name="VendorName2" Type="varchar" MaxLength="100" />
+          <Property Name="VendorName3" Type="varchar" MaxLength="100" />
+          <Property Name="VendorFilePath1" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorFilePath2" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorFilePath3" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorFileName1" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorFileName2" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorFileName3" Type="varchar" MaxLength="1000" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PMS.dbo.tblProjectMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblProjectMaster">
+          <Key>
+            <PropertyRef Name="PROJECTID" />
+          </Key>
+          <Property Name="PROJECTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROJECTCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROJECTNAME" Type="nvarchar" MaxLength="2000" />
+          <Property Name="BRANCHCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BRANCHCODETYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIVISION" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROJECTTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="TYPEOFSERVICE" Type="nvarchar" MaxLength="50" />
+          <Property Name="WORKORDERNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="WORKORDERDATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="WORKORDERVALUE" Type="nvarchar" MaxLength="50" />
+          <Property Name="WORKORDERPATH" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENTNAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CLIENTAddress1" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENTAddress2" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactPerson1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPerson2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo1" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactNo2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emailid1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emailid2" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployerAddress1" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmployerAddress2" Type="nvarchar" MaxLength="500" />
+          <Property Name="AuthorityEngineer" Type="nvarchar" MaxLength="100" />
+          <Property Name="EngineerAddress1" Type="nvarchar" MaxLength="500" />
+          <Property Name="EngineerAddress2" Type="nvarchar" MaxLength="500" />
+          <Property Name="ScopeofService" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblReports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department" Type="int" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReportNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReportDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ReportTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="Chainage" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateOfSubmission" Type="datetimeoffset" Precision="7" />
+          <Property Name="SubmittedTo" Type="nvarchar" MaxLength="500" />
+          <Property Name="SoftHardCopy" Type="nvarchar" MaxLength="50" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="ViaEmailLetter" Type="nvarchar" MaxLength="500" />
+          <Property Name="OtherDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="RevisionNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="RevisionDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="OtherSubmittedTo" Type="nvarchar" MaxLength="100" />
+          <Property Name="OtherSoftHardCopy" Type="nvarchar" MaxLength="50" />
+          <Property Name="OtherFilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="OtherFileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ApprovalDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblResumeData">
+          <Key>
+            <PropertyRef Name="ResumeId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResumeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ResumeDate" Type="date" />
+          <Property Name="Designation" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="ReceivedThrough" Type="varchar" MaxLength="1000" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Keywords" Type="varchar" MaxLength="1000" />
+          <Property Name="ExpYears" Type="int" />
+          <Property Name="ExpMonths" Type="int" />
+          <Property Name="PresentCompany" Type="varchar" MaxLength="100" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="PlaceOfWorking" Type="varchar" MaxLength="100" />
+          <Property Name="NoOfCompanies" Type="int" />
+          <Property Name="PresentSalary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ExpectedSalary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="Address1" Type="varchar" MaxLength="1000" />
+          <Property Name="Address2" Type="varchar" MaxLength="1000" />
+          <Property Name="Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="CVCompletePath" Type="varchar" MaxLength="1000" />
+          <Property Name="CVPath" Type="varchar" MaxLength="1000" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="TempEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoleID" Type="uniqueidentifier" />
+          <Property Name="EmpId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Acive" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="100" />
+          <Property Name="Verified" Type="bit" />
+          <Property Name="VerifcationCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="VerifiedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="Other" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblVendorAllocation">
+          <Key>
+            <PropertyRef Name="VendorAllocationId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorAllocationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Activity" Type="bit" />
+          <Property Name="InHouseOutSource" Type="bit" />
+          <Property Name="VendorCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="500" />
+          <Property Name="WOValue" Type="nvarchar" MaxLength="100" />
+          <Property Name="WODate" Type="datetimeoffset" Precision="7" />
+          <Property Name="WONo" Type="nvarchar" MaxLength="100" />
+          <Property Name="RevisedWOValue" Type="nvarchar" MaxLength="100" />
+          <Property Name="Amendment" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblVendorData">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TypeOfOwnership" Type="bit" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="500" />
+          <Property Name="VendorCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="City" Type="datetimeoffset" Precision="7" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Website" Type="nvarchar" MaxLength="500" />
+          <Property Name="state" Type="nvarchar" MaxLength="100" />
+          <Property Name="PinNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="AuthorisedRepresentative" Type="nvarchar" MaxLength="500" />
+          <Property Name="Designation1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation2" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNo1" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNo2" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailId1" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailId2" Type="nvarchar" MaxLength="100" />
+          <Property Name="AlternateContactPerson" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServicesOfVendor" Type="nvarchar" MaxLength="1000" />
+          <Property Name="VendorNameAsPerBak" Type="nvarchar" MaxLength="500" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="100" />
+          <Property Name="IFSCCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="PanNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="MSMENo" Type="nvarchar" MaxLength="100" />
+          <Property Name="GSTINNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="CINNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsPanCard" Type="bit" />
+          <Property Name="PanCardPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="PanCardName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCertificateofIncorporation" Type="bit" />
+          <Property Name="CertificateofIncorporationPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="CertificateofIncorporationName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCompanyProfile" Type="bit" />
+          <Property Name="CompanyProfilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="CompanyProfileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsGSTCertificate" Type="bit" />
+          <Property Name="GSTCertificatePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="GSTCertificateName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCancelledheque" Type="bit" />
+          <Property Name="CancelledhequePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="CancelledhequeName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCMSME" Type="bit" />
+          <Property Name="MSMEPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="MSMEName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsFile" Type="bit" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="PMSModelStoreContainer">
+          <EntitySet Name="tblBGsData" EntityType="Self.tblBGsData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCorrespondence" EntityType="Self.tblCorrespondence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDrawing" EntityType="Self.tblDrawing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEducation" EntityType="Self.tblEducation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceConsultant" EntityType="Self.tblInvoiceConsultant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceData" EntityType="Self.tblInvoiceData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInwardWO" EntityType="Self.tblInwardWO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOutwardWO" EntityType="Self.tblOutwardWO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReports" EntityType="Self.tblReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblResumeData" EntityType="Self.tblResumeData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendorAllocation" EntityType="Self.tblVendorAllocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendorData" EntityType="Self.tblVendorData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFilters" EntityType="Self.tblFilters" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblFilters].[Id] AS [Id], 
+    [tblFilters].[FilterCode] AS [FilterCode], 
+    [tblFilters].[FilterName] AS [FilterName], 
+    [tblFilters].[FilterType] AS [FilterType], 
+    [tblFilters].[FilterEnable] AS [FilterEnable], 
+    [tblFilters].[ParentFilterCode] AS [ParentFilterCode]
+    FROM [dbo].[tblFilters] AS [tblFilters]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblProjectMaster" EntityType="Self.tblProjectMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblProjectMaster].[PROJECTID] AS [PROJECTID], 
+    [tblProjectMaster].[PROJECTCODE] AS [PROJECTCODE], 
+    [tblProjectMaster].[PROJECTNAME] AS [PROJECTNAME], 
+    [tblProjectMaster].[BRANCHCODE] AS [BRANCHCODE], 
+    [tblProjectMaster].[BRANCHCODETYPE] AS [BRANCHCODETYPE], 
+    [tblProjectMaster].[DIVISION] AS [DIVISION], 
+    [tblProjectMaster].[PROJECTTYPE] AS [PROJECTTYPE], 
+    [tblProjectMaster].[TYPEOFSERVICE] AS [TYPEOFSERVICE], 
+    [tblProjectMaster].[WORKORDERNO] AS [WORKORDERNO], 
+    [tblProjectMaster].[WORKORDERDATE] AS [WORKORDERDATE], 
+    [tblProjectMaster].[WORKORDERVALUE] AS [WORKORDERVALUE], 
+    [tblProjectMaster].[WORKORDERPATH] AS [WORKORDERPATH], 
+    [tblProjectMaster].[CLIENTNAME] AS [CLIENTNAME], 
+    [tblProjectMaster].[CLIENTAddress1] AS [CLIENTAddress1], 
+    [tblProjectMaster].[CLIENTAddress2] AS [CLIENTAddress2], 
+    [tblProjectMaster].[ContactPerson1] AS [ContactPerson1], 
+    [tblProjectMaster].[ContactPerson2] AS [ContactPerson2], 
+    [tblProjectMaster].[ContactNo1] AS [ContactNo1], 
+    [tblProjectMaster].[ContactNo2] AS [ContactNo2], 
+    [tblProjectMaster].[Emailid1] AS [Emailid1], 
+    [tblProjectMaster].[Emailid2] AS [Emailid2], 
+    [tblProjectMaster].[EmployerName] AS [EmployerName], 
+    [tblProjectMaster].[EmployerAddress1] AS [EmployerAddress1], 
+    [tblProjectMaster].[EmployerAddress2] AS [EmployerAddress2], 
+    [tblProjectMaster].[AuthorityEngineer] AS [AuthorityEngineer], 
+    [tblProjectMaster].[EngineerAddress1] AS [EngineerAddress1], 
+    [tblProjectMaster].[EngineerAddress2] AS [EngineerAddress2], 
+    [tblProjectMaster].[ScopeofService] AS [ScopeofService], 
+    [tblProjectMaster].[UserId] AS [UserId], 
+    [tblProjectMaster].[CreatedDateTime] AS [CreatedDateTime], 
+    [tblProjectMaster].[CreatedBy] AS [CreatedBy], 
+    [tblProjectMaster].[UpdatedDateTime] AS [UpdatedDateTime], 
+    [tblProjectMaster].[UpdatedBy] AS [UpdatedBy]
+    FROM [dbo].[tblProjectMaster] AS [tblProjectMaster]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblEducation">
+          <Key>
+            <PropertyRef Name="EducationId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationId" Type="Guid" Nullable="false" />
+          <Property Name="ResumeId" Type="Guid" Nullable="false" />
+          <Property Name="Qualification" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="University" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Course" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Specialisation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EducationType" Type="Int32" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblResumeData">
+          <Key>
+            <PropertyRef Name="ResumeId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResumeId" Type="Guid" Nullable="false" />
+          <Property Name="ResumeDate" Type="DateTime" Precision="0" />
+          <Property Name="Designation" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="ReceivedThrough" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Keywords" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ExpYears" Type="Int32" />
+          <Property Name="ExpMonths" Type="Int32" />
+          <Property Name="PresentCompany" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceOfWorking" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfCompanies" Type="Int32" />
+          <Property Name="PresentSalary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ExpectedSalary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CVCompletePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CVPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblInwardWO">
+          <Key>
+            <PropertyRef Name="WOId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WOId" Type="Guid" Nullable="false" />
+          <Property Name="BranchCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BranchLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Division" Type="Int32" />
+          <Property Name="ProjectType" Type="Int32" />
+          <Property Name="TypeofService" Type="Int32" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkOrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="WorkOrderValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WOPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PinCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BilligAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BillingState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BillingPiCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GSTIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScopeofService" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblProjectMaster">
+          <Key>
+            <PropertyRef Name="PROJECTID" />
+          </Key>
+          <Property Name="PROJECTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROJECTCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROJECTNAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCHCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCHCODETYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIVISION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROJECTTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TYPEOFSERVICE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERDATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERVALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERPATH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENTAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENTAddress2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emailid1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emailid2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerAddress2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorityEngineer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EngineerAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EngineerAddress2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ScopeofService" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblEducations" EntityType="Self.tblEducation" />
+          <EntitySet Name="tblResumeDatas" EntityType="Self.tblResumeData" />
+          <EntitySet Name="tblInwardWOes" EntityType="Self.tblInwardWO" />
+          <EntitySet Name="tblProjectMasters" EntityType="Self.tblProjectMaster" />
+          <EntitySet Name="tblFilters" EntityType="PMSModel.tblFilter" />
+          <EntitySet Name="tblCorrespondences" EntityType="PMSModel.tblCorrespondence" />
+          <EntitySet Name="tblDrawings" EntityType="PMSModel.tblDrawing" />
+          <EntitySet Name="tblReports" EntityType="PMSModel.tblReport" />
+          <EntitySet Name="tblOutwardWOes" EntityType="PMSModel.tblOutwardWO" />
+          <EntitySet Name="tblBGsDatas" EntityType="PMSModel.tblBGsData" />
+          <EntitySet Name="tblUsers" EntityType="PMSModel.tblUser" />
+          <EntitySet Name="tblInvoiceConsultants" EntityType="PMSModel.tblInvoiceConsultant" />
+          <EntitySet Name="tblInvoiceDatas" EntityType="PMSModel.tblInvoiceData" />
+          <EntitySet Name="tblVendorAllocations" EntityType="PMSModel.tblVendorAllocation" />
+          <EntitySet Name="tblVendorDatas" EntityType="PMSModel.tblVendorData" />
+        </EntityContainer>
+        <EntityType Name="tblFilter">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FilterCode" />
+            <PropertyRef Name="FilterName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilterCode" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FilterName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FilterType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FilterEnable" Type="Boolean" />
+          <Property Name="ParentFilterCode" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCorrespondence">
+          <Key>
+            <PropertyRef Name="CorrespondenceId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CorrespondenceId" Type="Guid" Nullable="false" />
+          <Property Name="CorrespondenceType" Type="Int32" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FromName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FromDesignation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FromOrganisation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FromAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToDesignation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToOrganisation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CopyToName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CopyToDesignation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CopyToOrganisation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CopyToAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LetterNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LetterDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Reference1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceDate1" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Reference2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceDate2" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Reference3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceDate3" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Keywords" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedThrough" Type="Int32" />
+          <Property Name="ReceivedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EmailID1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmailID2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmailID3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedType" Type="Int32" />
+          <Property Name="ReceivedDate1" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ReceivedBy1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedDate2" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ReceivedBy2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDrawing">
+          <Key>
+            <PropertyRef Name="DrawingId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DrawingId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DrawingNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DrawingDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="DrawingTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Chainage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfSubmission" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SubmittedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SoftHardCopy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ViaEmailLetter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OtherDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="RevisionNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RevisionDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="OtherSubmittedTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OtherSoftHardCopy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherFilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OtherFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovalDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReportNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReportDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ReportTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Chainage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfSubmission" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SubmittedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SoftHardCopy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ViaEmailLetter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OtherDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="RevisionNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RevisionDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="OtherSubmittedTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OtherSoftHardCopy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherFilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OtherFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovalDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOutwardWO">
+          <Key>
+            <PropertyRef Name="WOId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WOId" Type="Guid" Nullable="false" />
+          <Property Name="BranchCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BranchLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Division" Type="Int32" />
+          <Property Name="ProjectType" Type="Int32" />
+          <Property Name="TypeofService" Type="Int32" />
+          <Property Name="RelatedProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VendorId" Type="Guid" />
+          <Property Name="VendorCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkOrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DescriptionofWO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkOrderValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WOFilePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="WOFileName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorName1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorName2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorName3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFilePath1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFilePath2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFilePath3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFileName1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFileName2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFileName3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblBGsData">
+          <Key>
+            <PropertyRef Name="BGsId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BGsId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfService" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WONo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WODate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="TypeOfBG" Type="Int32" />
+          <Property Name="WOValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfBeneficiary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BGNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BGDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="BGEffectiveDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDateOfClaim" Type="DateTimeOffset" Precision="7" />
+          <Property Name="BGValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IssuingBank" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IssuingBranch" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IssuingAddress" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="BeneficiaryBank" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BeneficiaryBranch" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IFSCCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceContract" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ValidDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ValidTo" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+                  <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TempEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="Guid" />
+          <Property Name="EmpId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Acive" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IpAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Verified" Type="Boolean" />
+          <Property Name="VerifcationCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VerifiedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblInvoiceConsultant">
+          <Key>
+            <PropertyRef Name="InvoiceConsultantId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceConsultantId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorOrderCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WorOrderName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VendorName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsOfWorkdone" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfConsultant" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ConsultantInvoiceNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CGSTAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SGSTAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IGST" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TotalInvoiceAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceAmtAccepted" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblInvoiceData">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfInvoice" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CGSTAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SGSTAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IGST" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TotalInvoiceAmount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVendorAllocation">
+          <Key>
+            <PropertyRef Name="VendorAllocationId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorAllocationId" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Activity" Type="Boolean" />
+          <Property Name="InHouseOutSource" Type="Boolean" />
+          <Property Name="VendorCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VendorName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WOValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WODate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="WONo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RevisedWOValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amendment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVendorData">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Guid" Nullable="false" />
+          <Property Name="TypeOfOwnership" Type="Boolean" />
+          <Property Name="VendorName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PinNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorisedRepresentative" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Designation1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AlternateContactPerson" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServicesOfVendor" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="VendorNameAsPerBak" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IFSCCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PanNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MSMENo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GSTINNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CINNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsPanCard" Type="Boolean" />
+          <Property Name="PanCardPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PanCardName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCertificateofIncorporation" Type="Boolean" />
+          <Property Name="CertificateofIncorporationPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CertificateofIncorporationName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCompanyProfile" Type="Boolean" />
+          <Property Name="CompanyProfilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyProfileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsGSTCertificate" Type="Boolean" />
+          <Property Name="GSTCertificatePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GSTCertificateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCancelledheque" Type="Boolean" />
+          <Property Name="CancelledhequePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CancelledhequeName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCMSME" Type="Boolean" />
+          <Property Name="MSMEPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MSMEName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsFile" Type="Boolean" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PMSModelStoreContainer" CdmEntityContainer="PMSEntities">
+          <EntitySetMapping Name="tblEducations">
+            <EntityTypeMapping TypeName="PMSModel.tblEducation">
+              <MappingFragment StoreEntitySet="tblEducation">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EducationId" ColumnName="EducationId" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Specialisation" ColumnName="Specialisation" />
+                <ScalarProperty Name="EducationType" ColumnName="EducationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResumeDatas">
+            <EntityTypeMapping TypeName="PMSModel.tblResumeData">
+              <MappingFragment StoreEntitySet="tblResumeData">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+                <ScalarProperty Name="ResumeDate" ColumnName="ResumeDate" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ReceivedThrough" ColumnName="ReceivedThrough" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="ExpYears" ColumnName="ExpYears" />
+                <ScalarProperty Name="ExpMonths" ColumnName="ExpMonths" />
+                <ScalarProperty Name="PresentCompany" ColumnName="PresentCompany" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PlaceOfWorking" ColumnName="PlaceOfWorking" />
+                <ScalarProperty Name="NoOfCompanies" ColumnName="NoOfCompanies" />
+                <ScalarProperty Name="PresentSalary" ColumnName="PresentSalary" />
+                <ScalarProperty Name="ExpectedSalary" ColumnName="ExpectedSalary" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CVCompletePath" ColumnName="CVCompletePath" />
+                <ScalarProperty Name="CVPath" ColumnName="CVPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInwardWOes">
+            <EntityTypeMapping TypeName="PMSModel.tblInwardWO">
+              <MappingFragment StoreEntitySet="tblInwardWO">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WOId" ColumnName="WOId" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="BranchLocation" ColumnName="BranchLocation" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+                <ScalarProperty Name="TypeofService" ColumnName="TypeofService" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="WorkOrderNo" ColumnName="WorkOrderNo" />
+                <ScalarProperty Name="WorkOrderDate" ColumnName="WorkOrderDate" />
+                <ScalarProperty Name="WorkOrderValue" ColumnName="WorkOrderValue" />
+                <ScalarProperty Name="WOPath" ColumnName="WOPath" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="ContactPerson1" ColumnName="ContactPerson1" />
+                <ScalarProperty Name="ContactPerson2" ColumnName="ContactPerson2" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="InvoiceName" ColumnName="InvoiceName" />
+                <ScalarProperty Name="BilligAddress1" ColumnName="BilligAddress1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="BillingPiCode" ColumnName="BillingPiCode" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="ScopeofService" ColumnName="ScopeofService" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProjectMasters">
+            <EntityTypeMapping TypeName="PMSModel.tblProjectMaster">
+              <MappingFragment StoreEntitySet="tblProjectMaster">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PROJECTID" ColumnName="PROJECTID" />
+                <ScalarProperty Name="PROJECTCODE" ColumnName="PROJECTCODE" />
+                <ScalarProperty Name="PROJECTNAME" ColumnName="PROJECTNAME" />
+                <ScalarProperty Name="BRANCHCODE" ColumnName="BRANCHCODE" />
+                <ScalarProperty Name="BRANCHCODETYPE" ColumnName="BRANCHCODETYPE" />
+                <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+                <ScalarProperty Name="PROJECTTYPE" ColumnName="PROJECTTYPE" />
+                <ScalarProperty Name="TYPEOFSERVICE" ColumnName="TYPEOFSERVICE" />
+                <ScalarProperty Name="WORKORDERNO" ColumnName="WORKORDERNO" />
+                <ScalarProperty Name="WORKORDERDATE" ColumnName="WORKORDERDATE" />
+                <ScalarProperty Name="WORKORDERVALUE" ColumnName="WORKORDERVALUE" />
+                <ScalarProperty Name="WORKORDERPATH" ColumnName="WORKORDERPATH" />
+                <ScalarProperty Name="CLIENTNAME" ColumnName="CLIENTNAME" />
+                <ScalarProperty Name="CLIENTAddress1" ColumnName="CLIENTAddress1" />
+                <ScalarProperty Name="CLIENTAddress2" ColumnName="CLIENTAddress2" />
+                <ScalarProperty Name="ContactPerson1" ColumnName="ContactPerson1" />
+                <ScalarProperty Name="ContactPerson2" ColumnName="ContactPerson2" />
+                <ScalarProperty Name="ContactNo1" ColumnName="ContactNo1" />
+                <ScalarProperty Name="ContactNo2" ColumnName="ContactNo2" />
+                <ScalarProperty Name="Emailid1" ColumnName="Emailid1" />
+                <ScalarProperty Name="Emailid2" ColumnName="Emailid2" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="EmployerAddress1" ColumnName="EmployerAddress1" />
+                <ScalarProperty Name="EmployerAddress2" ColumnName="EmployerAddress2" />
+                <ScalarProperty Name="AuthorityEngineer" ColumnName="AuthorityEngineer" />
+                <ScalarProperty Name="EngineerAddress1" ColumnName="EngineerAddress1" />
+                <ScalarProperty Name="EngineerAddress2" ColumnName="EngineerAddress2" />
+                <ScalarProperty Name="ScopeofService" ColumnName="ScopeofService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFilters">
+            <EntityTypeMapping TypeName="PMSModel.tblFilter">
+              <MappingFragment StoreEntitySet="tblFilters">
+                <ScalarProperty Name="ParentFilterCode" ColumnName="ParentFilterCode" />
+                <ScalarProperty Name="FilterEnable" ColumnName="FilterEnable" />
+                <ScalarProperty Name="FilterType" ColumnName="FilterType" />
+                <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+                <ScalarProperty Name="FilterCode" ColumnName="FilterCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCorrespondences">
+            <EntityTypeMapping TypeName="PMSModel.tblCorrespondence">
+              <MappingFragment StoreEntitySet="tblCorrespondence">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="ReceivedBy2" ColumnName="ReceivedBy2" />
+                <ScalarProperty Name="ReceivedDate2" ColumnName="ReceivedDate2" />
+                <ScalarProperty Name="ReceivedBy1" ColumnName="ReceivedBy1" />
+                <ScalarProperty Name="ReceivedDate1" ColumnName="ReceivedDate1" />
+                <ScalarProperty Name="ReceivedType" ColumnName="ReceivedType" />
+                <ScalarProperty Name="EmailID3" ColumnName="EmailID3" />
+                <ScalarProperty Name="EmailID2" ColumnName="EmailID2" />
+                <ScalarProperty Name="EmailID1" ColumnName="EmailID1" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="ReceivedThrough" ColumnName="ReceivedThrough" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="ReferenceDate3" ColumnName="ReferenceDate3" />
+                <ScalarProperty Name="Reference3" ColumnName="Reference3" />
+                <ScalarProperty Name="ReferenceDate2" ColumnName="ReferenceDate2" />
+                <ScalarProperty Name="Reference2" ColumnName="Reference2" />
+                <ScalarProperty Name="ReferenceDate1" ColumnName="ReferenceDate1" />
+                <ScalarProperty Name="Reference1" ColumnName="Reference1" />
+                <ScalarProperty Name="LetterDate" ColumnName="LetterDate" />
+                <ScalarProperty Name="LetterNo" ColumnName="LetterNo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="CopyToAddress" ColumnName="CopyToAddress" />
+                <ScalarProperty Name="CopyToOrganisation" ColumnName="CopyToOrganisation" />
+                <ScalarProperty Name="CopyToDesignation" ColumnName="CopyToDesignation" />
+                <ScalarProperty Name="CopyToName" ColumnName="CopyToName" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="ToOrganisation" ColumnName="ToOrganisation" />
+                <ScalarProperty Name="ToDesignation" ColumnName="ToDesignation" />
+                <ScalarProperty Name="ToName" ColumnName="ToName" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="FromOrganisation" ColumnName="FromOrganisation" />
+                <ScalarProperty Name="FromDesignation" ColumnName="FromDesignation" />
+                <ScalarProperty Name="FromName" ColumnName="FromName" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="CorrespondenceType" ColumnName="CorrespondenceType" />
+                <ScalarProperty Name="CorrespondenceId" ColumnName="CorrespondenceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDrawings">
+            <EntityTypeMapping TypeName="PMSModel.tblDrawing">
+              <MappingFragment StoreEntitySet="tblDrawing">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="OtherFileName" ColumnName="OtherFileName" />
+                <ScalarProperty Name="OtherFilePath" ColumnName="OtherFilePath" />
+                <ScalarProperty Name="OtherSoftHardCopy" ColumnName="OtherSoftHardCopy" />
+                <ScalarProperty Name="OtherSubmittedTo" ColumnName="OtherSubmittedTo" />
+                <ScalarProperty Name="RevisionDate" ColumnName="RevisionDate" />
+                <ScalarProperty Name="RevisionNo" ColumnName="RevisionNo" />
+                <ScalarProperty Name="OtherDate" ColumnName="OtherDate" />
+                <ScalarProperty Name="ViaEmailLetter" ColumnName="ViaEmailLetter" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="SoftHardCopy" ColumnName="SoftHardCopy" />
+                <ScalarProperty Name="SubmittedTo" ColumnName="SubmittedTo" />
+                <ScalarProperty Name="DateOfSubmission" ColumnName="DateOfSubmission" />
+                <ScalarProperty Name="Chainage" ColumnName="Chainage" />
+                <ScalarProperty Name="DrawingTitle" ColumnName="DrawingTitle" />
+                <ScalarProperty Name="DrawingDate" ColumnName="DrawingDate" />
+                <ScalarProperty Name="DrawingNo" ColumnName="DrawingNo" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="DrawingId" ColumnName="DrawingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReports">
+            <EntityTypeMapping TypeName="PMSModel.tblReport">
+              <MappingFragment StoreEntitySet="tblReports">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="OtherFileName" ColumnName="OtherFileName" />
+                <ScalarProperty Name="OtherFilePath" ColumnName="OtherFilePath" />
+                <ScalarProperty Name="OtherSoftHardCopy" ColumnName="OtherSoftHardCopy" />
+                <ScalarProperty Name="OtherSubmittedTo" ColumnName="OtherSubmittedTo" />
+                <ScalarProperty Name="RevisionDate" ColumnName="RevisionDate" />
+                <ScalarProperty Name="RevisionNo" ColumnName="RevisionNo" />
+                <ScalarProperty Name="OtherDate" ColumnName="OtherDate" />
+                <ScalarProperty Name="ViaEmailLetter" ColumnName="ViaEmailLetter" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="SoftHardCopy" ColumnName="SoftHardCopy" />
+                <ScalarProperty Name="SubmittedTo" ColumnName="SubmittedTo" />
+                <ScalarProperty Name="DateOfSubmission" ColumnName="DateOfSubmission" />
+                <ScalarProperty Name="Chainage" ColumnName="Chainage" />
+                <ScalarProperty Name="ReportTitle" ColumnName="ReportTitle" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="ReportNo" ColumnName="ReportNo" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOutwardWOes">
+            <EntityTypeMapping TypeName="PMSModel.tblOutwardWO">
+              <MappingFragment StoreEntitySet="tblOutwardWO">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VendorFileName3" ColumnName="VendorFileName3" />
+                <ScalarProperty Name="VendorFileName2" ColumnName="VendorFileName2" />
+                <ScalarProperty Name="VendorFileName1" ColumnName="VendorFileName1" />
+                <ScalarProperty Name="VendorFilePath3" ColumnName="VendorFilePath3" />
+                <ScalarProperty Name="VendorFilePath2" ColumnName="VendorFilePath2" />
+                <ScalarProperty Name="VendorFilePath1" ColumnName="VendorFilePath1" />
+                <ScalarProperty Name="VendorName3" ColumnName="VendorName3" />
+                <ScalarProperty Name="VendorName2" ColumnName="VendorName2" />
+                <ScalarProperty Name="VendorName1" ColumnName="VendorName1" />
+                <ScalarProperty Name="WOFileName" ColumnName="WOFileName" />
+                <ScalarProperty Name="WOFilePath" ColumnName="WOFilePath" />
+                <ScalarProperty Name="WorkOrderValue" ColumnName="WorkOrderValue" />
+                <ScalarProperty Name="DescriptionofWO" ColumnName="DescriptionofWO" />
+                <ScalarProperty Name="WorkOrderDate" ColumnName="WorkOrderDate" />
+                <ScalarProperty Name="WorkOrderNo" ColumnName="WorkOrderNo" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="RelatedProjectCode" ColumnName="RelatedProjectCode" />
+                <ScalarProperty Name="TypeofService" ColumnName="TypeofService" />
+                <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="BranchLocation" ColumnName="BranchLocation" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="WOId" ColumnName="WOId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBGsDatas">
+            <EntityTypeMapping TypeName="PMSModel.tblBGsData">
+              <MappingFragment StoreEntitySet="tblBGsData">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+                <ScalarProperty Name="ValidDate" ColumnName="ValidDate" />
+                <ScalarProperty Name="ReferenceContract" ColumnName="ReferenceContract" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="BeneficiaryBranch" ColumnName="BeneficiaryBranch" />
+                <ScalarProperty Name="BeneficiaryBank" ColumnName="BeneficiaryBank" />
+                <ScalarProperty Name="IssuingAddress" ColumnName="IssuingAddress" />
+                <ScalarProperty Name="IssuingBranch" ColumnName="IssuingBranch" />
+                <ScalarProperty Name="IssuingBank" ColumnName="IssuingBank" />
+                <ScalarProperty Name="BGValue" ColumnName="BGValue" />
+                <ScalarProperty Name="EndDateOfClaim" ColumnName="EndDateOfClaim" />
+                <ScalarProperty Name="BGEffectiveDate" ColumnName="BGEffectiveDate" />
+                <ScalarProperty Name="BGDate" ColumnName="BGDate" />
+                <ScalarProperty Name="BGNo" ColumnName="BGNo" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="NameOfBeneficiary" ColumnName="NameOfBeneficiary" />
+                <ScalarProperty Name="WOValue" ColumnName="WOValue" />
+                <ScalarProperty Name="TypeOfBG" ColumnName="TypeOfBG" />
+                <ScalarProperty Name="WODate" ColumnName="WODate" />
+                <ScalarProperty Name="WONo" ColumnName="WONo" />
+                <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="BGsId" ColumnName="BGsId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="PMSModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="VerifiedDateTime" ColumnName="VerifiedDateTime" />
+                <ScalarProperty Name="VerifcationCode" ColumnName="VerifcationCode" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Acive" ColumnName="Acive" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="TempEmail" ColumnName="TempEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceConsultants">
+            <EntityTypeMapping TypeName="PMSModel.tblInvoiceConsultant">
+              <MappingFragment StoreEntitySet="tblInvoiceConsultant">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InvoiceAmtAccepted" ColumnName="InvoiceAmtAccepted" />
+                <ScalarProperty Name="TotalInvoiceAmount" ColumnName="TotalInvoiceAmount" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+                <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+                <ScalarProperty Name="ConsultantInvoiceNo" ColumnName="ConsultantInvoiceNo" />
+                <ScalarProperty Name="NameOfConsultant" ColumnName="NameOfConsultant" />
+                <ScalarProperty Name="DetailsOfWorkdone" ColumnName="DetailsOfWorkdone" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="WorOrderName" ColumnName="WorOrderName" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="WorOrderCode" ColumnName="WorOrderCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="InvoiceConsultantId" ColumnName="InvoiceConsultantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceDatas">
+            <EntityTypeMapping TypeName="PMSModel.tblInvoiceData">
+              <MappingFragment StoreEntitySet="tblInvoiceData">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalInvoiceAmount" ColumnName="TotalInvoiceAmount" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+                <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeOfInvoice" ColumnName="TypeOfInvoice" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendorAllocations">
+            <EntityTypeMapping TypeName="PMSModel.tblVendorAllocation">
+              <MappingFragment StoreEntitySet="tblVendorAllocation">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Amendment" ColumnName="Amendment" />
+                <ScalarProperty Name="RevisedWOValue" ColumnName="RevisedWOValue" />
+                <ScalarProperty Name="WONo" ColumnName="WONo" />
+                <ScalarProperty Name="WODate" ColumnName="WODate" />
+                <ScalarProperty Name="WOValue" ColumnName="WOValue" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="InHouseOutSource" ColumnName="InHouseOutSource" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="VendorAllocationId" ColumnName="VendorAllocationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendorDatas">
+            <EntityTypeMapping TypeName="PMSModel.tblVendorData">
+              <MappingFragment StoreEntitySet="tblVendorData">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="IsFile" ColumnName="IsFile" />
+                <ScalarProperty Name="MSMEName" ColumnName="MSMEName" />
+                <ScalarProperty Name="MSMEPath" ColumnName="MSMEPath" />
+                <ScalarProperty Name="IsCMSME" ColumnName="IsCMSME" />
+                <ScalarProperty Name="CancelledhequeName" ColumnName="CancelledhequeName" />
+                <ScalarProperty Name="CancelledhequePath" ColumnName="CancelledhequePath" />
+                <ScalarProperty Name="IsCancelledheque" ColumnName="IsCancelledheque" />
+                <ScalarProperty Name="GSTCertificateName" ColumnName="GSTCertificateName" />
+                <ScalarProperty Name="GSTCertificatePath" ColumnName="GSTCertificatePath" />
+                <ScalarProperty Name="IsGSTCertificate" ColumnName="IsGSTCertificate" />
+                <ScalarProperty Name="CompanyProfileName" ColumnName="CompanyProfileName" />
+                <ScalarProperty Name="CompanyProfilePath" ColumnName="CompanyProfilePath" />
+                <ScalarProperty Name="IsCompanyProfile" ColumnName="IsCompanyProfile" />
+                <ScalarProperty Name="CertificateofIncorporationName" ColumnName="CertificateofIncorporationName" />
+                <ScalarProperty Name="CertificateofIncorporationPath" ColumnName="CertificateofIncorporationPath" />
+                <ScalarProperty Name="IsCertificateofIncorporation" ColumnName="IsCertificateofIncorporation" />
+                <ScalarProperty Name="PanCardName" ColumnName="PanCardName" />
+                <ScalarProperty Name="PanCardPath" ColumnName="PanCardPath" />
+                <ScalarProperty Name="IsPanCard" ColumnName="IsPanCard" />
+                <ScalarProperty Name="CINNo" ColumnName="CINNo" />
+                <ScalarProperty Name="GSTINNo" ColumnName="GSTINNo" />
+                <ScalarProperty Name="MSMENo" ColumnName="MSMENo" />
+                <ScalarProperty Name="PanNo" ColumnName="PanNo" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="VendorNameAsPerBak" ColumnName="VendorNameAsPerBak" />
+                <ScalarProperty Name="ServicesOfVendor" ColumnName="ServicesOfVendor" />
+                <ScalarProperty Name="AlternateContactPerson" ColumnName="AlternateContactPerson" />
+                <ScalarProperty Name="EmailId2" ColumnName="EmailId2" />
+                <ScalarProperty Name="EmailId1" ColumnName="EmailId1" />
+                <ScalarProperty Name="MobileNo2" ColumnName="MobileNo2" />
+                <ScalarProperty Name="MobileNo1" ColumnName="MobileNo1" />
+                <ScalarProperty Name="Designation2" ColumnName="Designation2" />
+                <ScalarProperty Name="Designation1" ColumnName="Designation1" />
+                <ScalarProperty Name="AuthorisedRepresentative" ColumnName="AuthorisedRepresentative" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="PinNo" ColumnName="PinNo" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="TypeOfOwnership" ColumnName="TypeOfOwnership" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

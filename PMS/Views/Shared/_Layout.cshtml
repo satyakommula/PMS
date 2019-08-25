@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PMS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Assets/Styles/Home.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquerygrid")*@
+    @{
+        if (Request.Url.ToString().Contains("WorkOrder/")
+            || Request.Url.ToString().Contains("Drawing/DrawingEntry")
+            || Request.Url.ToString().Contains("Correspondence/")
+            || Request.Url.ToString().Contains("Reports/ReportsData"))
+        {
+            <link href="~/Assets/Scripts/Autocomplete/jquery-ui.css" rel="stylesheet" />
+            <script src="~/Assets/Scripts/Autocomplete/jquery-1.10.2.js"></script>
+            <script src="~/Assets/Scripts/Autocomplete/jquery-ui.js"></script>
+
+        }
+    }
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+        <div class="container displayblock ml-0 pl-0">
+            <button id="sidebarCollapse" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation"></button>
+            @*  <a class="navbar-brand" href="/">PMS</a>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    @*<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/Home/About" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="/Home/Contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right float-right  mr-auto">
+                  <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="/Account/Logout" id="loginLink" class="nav-link">Log Out</a></li>
+            </ul>
+
+        </div>*@
+
+            <div class="float-left text-white w-100">
+                <div class="row">
+                    <div class="col-2">
+
+                        <img src="~/Assets/Logo/Ruky_TR.png" style="height:40px;width:100px" />
+                    </div>
+                    <div class="col-8 text-center">
+                      <h4>  @ViewBag.Title</h4>
+                    </div>
+                    <div class="col-2">
+                        <ul class="nav navbar-nav navbar-right float-right  mr-auto">
+                            <li class="nav-item"><a href="/Account/Logout" id="loginLink" class="nav-link">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+               
+            </div>
+    </nav>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" data-spy="scroll" data-target=".mianul">
+
+            <ul class="list-unstyled components mianul overflowscroll">
+                <li class="active mainli">
+                    <a href="~/PMS/ProjectMaster">Project Master</a>
+                </li>
+                <li id="liResume" class="mainsub">
+                    <a id="aresumeDatabase" href="#resumeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Resume Database</a>
+                    <ul class="collapse list-unstyled" id="resumeSubmenu">
+                        <li id="linewresume" class="subli">
+                            <a href="~/PMS/Resume">New/Edit Resume</a>
+                        </li>
+                        <li id="lisearchresume" class="subli">
+                            <a href="~/PMS/Resume/SearchResume">Search Resume</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a id="aWorkOrder" href="#workOrderSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Work Orders</a>
+                    <ul class="collapse list-unstyled" id="workOrderSubmenu">
+                        <li id="liinwardWO" class="subli">
+                            <a href="~/PMS/WorkOrder/InwardWO">Inward WO</a>
+                        </li>
+                        <li id="liSearchInward" class="subli">
+                            <a href="~/PMS/WorkOrder/SearchInward">Search Inward</a>
+                        </li>
+                        <li id="lioutwardWO" class="subli">
+                            <a href="~/PMS/WorkOrder/OutwardWO">Outward WO</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a id="aDrawingReports" href="#drawingReportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Drawings/ Reports Data</a>
+                    <ul class="collapse list-unstyled" id="drawingReportsSubmenu">
+                        <li id="liDrawingEntry" class="subli">
+                            <a href="~/PMS/Drawing/DrawingEntry">Drawings Entry</a>
+                        </li>
+                        <li id="liDrawingSearch" class="subli">
+                            <a href="~/PMS/Drawing/SearchDrawing">Search Drawing</a>
+                        </li>
+                        <li id="liReportsEntry" class="subli">
+                            <a href="~/PMS/Reports/ReportsData">Reports Entry</a>
+                        </li>
+                        <li id="liReportsSearch" class="subli">
+                            <a href="~/PMS/Reports/SearchReports">Search Reports</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a id="aCorrespondence" href="#correspondenceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Correspondence</a>
+                    <ul class="collapse list-unstyled" id="correspondenceSubmenu">
+                        <li id="licorrespondenceAdd" class="subli">
+                            <a href="~/PMS/Correspondence/CorrespondenceData">New</a>
+                        </li>
+                        <li id="licorrespondenceSearch" class="subli">
+                            <a href="~/PMS/Correspondence/SearchCorrespondence">Search</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li id="liVendor" class="mainsub">
+                    <a id="avendorDatabase" href="#vendorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Vendors Data</a>
+                    <ul class="collapse list-unstyled" id="vendorSubmenu">
+                        <li id="livendorregistration" class="subli">
+                            <a href="~/PMS/Vendor/VendorRegistration">Vendors Registration</a>
+                        </li>
+                        <li id="liVendorAllocation" class="subli">
+                            <a href="~/PMS/Vendor/VendorAllocation">Vendors Allocation</a>
+                        </li>
+                        <li id="liVendorEvalation" class="subli">
+                            <a href="#">Vendors Evaluation</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a href="#statusSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Status of Work Orders</a>
+                    <ul class="collapse list-unstyled" id="statusSubmenu">
+                        <li class="subli">
+                            <a href="#">Inward WO</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Outward WO</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a href="ainvoice" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Invoice</a>
+                    <ul class="collapse list-unstyled" id="invoicesubmenu">
+                        <li id="liInvoiceData" class="subli">
+                            <a href="~/PMS/Invoice/InvoiceData">Invoice To Clients</a>
+                        </li>
+                        <li id="liInvoiceConsultant" class="subli">
+                            <a href="~/PMS/Invoice/ConsultantsInvoice">Consultants Invoice</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a id="aBGsData" href="#BGsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">BGs Data</a>
+                    <ul class="collapse list-unstyled" id="BGsSubmenu">
+                        <li id="libgsAdd" class="subli">
+                            <a href="~/PMS/BGs/BGsData">New</a>
+                        </li>
+                        <li id="libgsSearch" class="subli">
+                            <a href="~/PMS/BGs/SearchBGs">Search</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a href="#editsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Edit</a>
+                    <ul class="collapse list-unstyled" id="editsubmenu">
+                        <li class="subli">
+                            <a href="#">Project master</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Work Orders</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Invoice</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Vendors Data</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Project Status</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Resume</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainsub">
+                    <a href="#searchsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Search</a>
+                    <ul class="collapse list-unstyled" id="searchsubmenu">
+                        <li class="subli">
+                            <a href="#">Project master</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Work Orders</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Invoice</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Vendors Data</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Project Status</a>
+                        </li>
+                        <li class="subli">
+                            <a href="#">Resume</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="container body-content ml-0 pl-0">
+            @RenderBody()
+            @*<hr />*@
+            @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+        </div>
+    </div>
+    
+
+   
+</body>
+</html>
+<script src="~/Assets/Scripts/Home.js"></script>

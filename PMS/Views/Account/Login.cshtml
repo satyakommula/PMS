@@ -1,0 +1,67 @@
+﻿@model PMS.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    ViewBag.ReturnUrl = Request["ReturnUrl"];
+}
+
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/modernizr")
+<body class="p-0 m-0">
+
+    <input id="hdnError" type="hidden" value="@ViewBag.Error">
+    <div class="row mr-0 h-15">
+        <div class="col-md-3 col-sm-4  col-lg-2">
+            <img src="~/Assets/Logo/rukylogo.jpg" class="m-1" />
+        </div>
+        <div class="col-md-9 col-sm-8  col-lg-10 text-center mt-3">
+            <h2 class=".text-color-thickgray text-center">Project Management System</h2>
+        </div>
+    </div>
+    <div class="row mr-0 h-75">
+        <div class="col-md-6 col-sm-3  col-lg-7 bg-color-orange">
+
+        </div>
+        <div class="col-md-6 col-sm-9 col-lg-5 bg-color-gray mb-0">
+            @using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            {
+                <div class="form-group ml-2 mt-4">
+
+                    <div class="form-label-group">
+                        <label for="inputUserID">User ID</label>
+
+                        @Html.TextBoxFor(Model => Model.UserID, "", new { @class = "form-control", @required = true })
+                    </div>
+
+                    <div class="form-label-group mt-2">
+                        <label for="inputPassword">Password</label>
+                        @Html.PasswordFor(Model => Model.Password, new { @class = "form-control", @required = true })
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn  btn-primary  text-uppercase btn-default mt-2" type="submit">Sign in</button>
+                    </div>
+
+                    <div class="mt-2">
+                        @Html.ActionLink("Forgot Password", "ForgotPassword", "Account", new { @class = "text-color-darkgray " })
+                    </div>
+
+                    <div class="mt-2">
+                        @Html.ActionLink("SignUp", "SignUp", null, new { @class = "text-color-darkgray " })
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+    <div class="row mr-0 h-10 bg-color-darkgray text-white">
+        <p>&copy; @DateTime.Now.Year - PMS</p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendoui")
+</body>
+<div style="position: absolute; top: 1rem; right: 1rem;" class="alert hide alert-warning alert-dismissible" data-auto-dismiss role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning!</strong> <div id="divmsg">Invalid Credentails, try again.</div>
+</div>
+<script src="~/Assets/Scripts/Login.js"></script>

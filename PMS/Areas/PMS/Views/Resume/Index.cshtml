@@ -1,0 +1,354 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblResumeData
+@{
+    /**/
+
+    ViewBag.Title = "Resume Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listDesignation = listFilters.Where(filter => filter.FilterType == "Designation").ToList();
+    var listDepartment = listFilters.Where(filter => filter.FilterType == "Department").ToList();
+}
+
+@*@using (Html.BeginForm("Index", "Resume", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data",@id="resumeForm" }))
+{*@
+<form id="resumeForm">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnResumeId" value="@Model.ResumeId">
+    <input type="hidden" id="hdnCVPath" value="@Model.CVPath">
+    <input type="hidden" id="hdnCVCompletePath" value="@Model.CVCompletePath">
+    @if (Model.Id > 0)
+    {
+    <input type="hidden" id="hdnResumeDate" value="@Model.ResumeDate.Value.ToString("yyyy-MM-dd")">
+    <input type="hidden" id="hdnDOB" value="@Model.DOB.Value.ToString("yyyy-MM-dd")">
+    }
+    <div class="row ml-4 mt-4">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="ddlBranchCode">Resume No.</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ResumeDate, new { type = "date", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    @Html.DropDownListFor(M => M.Designation, new SelectList(listDesignation, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true, @placeholder = "Design" })
+                </div>
+                <div class="col-3">
+                    @Html.DropDownListFor(M => M.Department, new SelectList(listDepartment, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+        @*<div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Designation</label>
+                    <div class="col-8">
+                        @Html.DropDownListFor(M => M.Designation, new SelectList(listDesignation, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true })
+                    </div>
+                </div>
+            </div>*@
+        @*<div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="ddlBranchCode">Department</label>
+                    <div class="col-8">
+                        @Html.DropDownListFor(M => M.Department, new SelectList(listDepartment, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true })
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    <div class="row ml-4 mt-1">
+        <label class="control-label col-2" for="ReceivedThrough">Received through</label>
+        <div class="col-3 float-left ">
+            @Html.TextBoxFor(model => model.ReceivedThrough, new { @class = "form-control", @required = true, @placeholder = "Reference" })
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="Name">Name</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.DOB, new { type = "date", @class = "form-control", @required = true })
+
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @required = true, @placeholder = "Age" })
+
+                </div>
+            </div>
+        </div>
+        @*<div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="DOB">DOB</label>
+                    <div class="col-8">
+                        @Html.TextBoxFor(model => model.DOB, new { type = "date", @class = "form-control", @required = true })
+
+                    </div>
+                </div>
+            </div>*@
+        @*<div class="col-4">
+                <div class="row form-group ">
+                    <label class="col-form-label col-4" for="Age">Age</label>
+                    <div class="col-8">
+                        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @required = true })
+
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-2">
+                    <label class="col-form-label">Educational Qualification</label>
+                </div>
+                <div class="col-9" id="divEducation">
+                    @{
+                        if (Model.Id == 0)
+                        {
+                            @Html.Partial("_Qualification", new tblEducation())
+                        }
+                        else
+                        {
+                            foreach (var obj in Model.tblEducations.Where(i => i.EducationType == 1).ToList())
+                            {
+                                @Html.Partial("_Qualification", obj)
+                            }
+                        }
+
+                    }
+
+
+                </div>
+                <div class="col-1 p-1">
+                    <input type="button" class="btn-width-50" value="Add" id="btnAddQualification">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-2">
+                    <label class="col-form-label">Additional Qualification</label>
+                </div>
+                <div class="col-9" id="divAddEducation">
+                    @{
+                        if (Model.Id == 0)
+                        {
+                            @Html.Partial("_AdditionalQualifications", new tblEducation())
+                        }
+                        else
+                        {
+                            foreach (var obj in Model.tblEducations.Where(i => i.EducationType == 2).ToList())
+                            {
+                                @Html.Partial("_AdditionalQualifications", obj)
+                            }
+                        }
+
+                    }
+
+                </div>
+                <div class="col-1 p-1">
+                    <input class="btn-width-50" type="button" value="Add" id="btnAddADTQualification">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1 mb-4">
+        <label class="col-form-label col-2" for="ReceivedThrough">Key words</label>
+        <div class="col-3 float-left ">
+            @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control", @required = true, @placeholder = "Enter keywords for search" })
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label">Experience</label>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.ExpYears, new { type = "number", min = "0", max = "50", @class = "form-control", @required = true, @placeholder = "Years" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.ExpMonths, new { type = "number", min = "0", max = "12", @class = "form-control", @required = true, @placeholder = "Months" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.NoOfCompanies, new { @class = "form-control", @required = true, @placeholder = "No of companies " })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label"></label>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.PresentCompany, new { @class = "form-control", @placeholder = "Present Company" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Position, new { @class = "form-control",  @placeholder = "Position" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.PlaceOfWorking, new { @class = "form-control",  @placeholder = "Place of working" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label">Salary details (PA)</label>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.PresentSalary, new { @class = "form-control", @placeholder = "Present salary CTC (Rs.)" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.ExpectedSalary, new { @class = "form-control",  @placeholder = "Expected salary CTC (Rs.)" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label">Personal Details</label>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.FatherName, new { @class = "form-control", @placeholder = "Father's Name" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Address1, new { @class = "form-control", @placeholder = "Address1" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Address2, new { @class = "form-control",  @placeholder = "Address2" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", @placeholder = "Mobile" })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Mobile1, new { @class = "form-control", @placeholder = "Alternate contact No." })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @required = true, @placeholder = "Email" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+
+        <div class="col-2">
+            <label class="col-form-label" for="flWorkOrderPath">Upload CV</label>
+        </div>
+        <div class="col-3">
+            <div class="row form-group ">
+                <div class="col-12">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.Id > 0)
+    {
+        <div class="row ml-4 mt-1">
+
+            <div class="col-2">
+                <label class="col-form-label">Uploaded File</label>
+            </div>
+            <div class="col-3">
+                <div class="row form-group ">
+                    <div class="col-12">
+                        <label class="col-form-label">@Model.CVPath</label>
+
+                        <p class="small text-warning">uploading new file will replace existing file.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row ml-4 mt-1">
+        <div class="col-2">
+            <label class="col-form-label"></label>
+        </div>
+        <div class="col-3">
+            <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+        </div>
+    </div>
+</form>
+    @*}*@
+
+    <script src="~/Assets/Scripts/ResumeDatabase.js"></script>

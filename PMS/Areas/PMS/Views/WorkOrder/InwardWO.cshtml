@@ -1,0 +1,259 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblInwardWO
+@{
+    ViewBag.Title = "Inward Work Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listDivision = listFilters.Where(filter => filter.FilterType == "Division").ToList();
+    var listProjectType = listFilters.Where(filter => filter.FilterType == "ProjectType").ToList();
+    var LISTTypeofService = listFilters.Where(filter => filter.FilterType == "TypeofService").ToList();
+}
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+@*<link href="~/Assets/Scripts/Autocomplete/jquery-ui.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/Autocomplete/jquery-1.10.2.js"></script>
+<script src="~/Assets/Scripts/Autocomplete/jquery-ui.js"></script>*@
+
+<form id="formInwardWO">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnWOId" value="@Model.WOId">
+    <input type="hidden" id="hdnWOPath" value="@Model.WOPath">
+
+    <div class="row ml-4 mt-4">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="BranchCode">Branch Code</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.BranchCode, new { @class = "form-control minw-150", @required = true })
+                </div>
+                <label class="col-form-label col-2" for="BranchCode">Branch Location</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.BranchLocation, new { @class = "form-control minw-150", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ml-4 mt-1">
+        <div class="row col-12">
+            <div class="row form-group col-4 ml-0">
+                <label class="ml-0 mt-2" for="Division">Division</label>
+                <div class="">
+                    @Html.DropDownListFor(M => M.Division, new SelectList(listDivision, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180", @required = true, @placeholder = "Division" })
+
+                </div>
+            </div>
+            <div class="row form-group col-4 ml-2">
+                <label class="mt-2" for="ProjectType">Project Type</label>
+                <div class="">
+                    @Html.DropDownListFor(M => M.ProjectType, new SelectList(listProjectType, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180", @required = true, @placeholder = "Project Type" })
+
+                </div>
+            </div>
+            <div class="row form-group col-4 ml-2">
+                <label class="mt-2" for="TypeofService">Type of Service</label>
+                <div class="ml-3">
+                    @Html.DropDownListFor(M => M.TypeofService, new SelectList(LISTTypeofService, "FilterCode", "FilterName"), "Select", new { @class = "form-control minw-150 maxw-180", @required = true, @placeholder = "Type of Service" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="ProjectCode">Project Code</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.ProjectCode, new { @class = "form-control minw-150", @required = true, @placeholder = "Project Code" })
+
+                </div>
+                <label class="col-form-label col-2" for="ProjectName">Project Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.ProjectName, new { @class = "form-control minw-150", @required = true, @placeholder = "Project Name" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="WorkOrderNo">Work Order No</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.WorkOrderNo, new { @class = "form-control minw-150", @required = true, @placeholder = "Work Order No" })
+
+                </div>
+                <label class="col-form-label col-2" for="WorkOrderDate">Work Order Date</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.WorkOrderDate, new { type = "date", @class = "form-control minw-150", @required = true, @placeholder = "Work Order Date" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="WorkOrderNo">Work Order Value</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.WorkOrderValue, new { @class = "form-control minw-150", @required = true, @placeholder = "Work Order Value" })
+
+                </div>
+                <label class="col-form-label col-2" for="WorkOrderDate">Upload</label>
+                <div class="col-4">
+                    <div class="row form-group ">
+                        <div class="col-12">
+                            @Html.TextBoxFor(model => model.File, new { type = "file" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <span class="border-top my-3"></span>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="ClientName">Client Name</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.ClientName, new { @class = "form-control minw-150", @required = true, @placeholder = "Client Name" })
+
+                </div>
+                <label class="col-form-label col-2" for="InvoiceName">Invoice inthe Name of</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.InvoiceName, new { @class = "form-control minw-150", @required = true, @placeholder = "Invoice inthe Name of" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="Address1">Address for Communication</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.Address1, new { @class = "form-control minw-150", @required = true, @placeholder = "Address1" })
+
+                </div>
+                <label class="col-form-label col-2" for="BilligAddress1">Address for Billing</label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.BilligAddress1, new { @class = "form-control minw-150", @required = true, @placeholder = "Address1" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="Address2"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.Address2, new { @class = "form-control minw-150", @required = true, @placeholder = "Address2" })
+
+                </div>
+                <label class="col-form-label col-2" for="BillingAddress2"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.BillingAddress2, new { @class = "form-control minw-150", @required = true, @placeholder = "Address2" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="State"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.State, new { @class = "form-control minw-150", @required = true, @placeholder = "State" })
+
+                </div>
+                <label class="col-form-label col-2" for="BillingState"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.BillingState, new { @class = "form-control minw-150", @required = true, @placeholder = "State" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="PinCode"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.PinCode, new { @class = "form-control minw-150", @required = true, @placeholder = "Pin Code" })
+
+                </div>
+                <label class="col-form-label col-2" for="BillingState"></label>
+                <div class="col-4">
+                    @Html.TextBoxFor(M => M.BillingPiCode, new { @class = "form-control minw-150", @required = true, @placeholder = "Pin Code" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="ContactPerson1">Contact Person</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.ContactPerson1, new { @class = "form-control minw-150", @required = true, @placeholder = "Contact Person1" })
+
+                </div>
+                <div class="col-2  ml-2 mr-3">
+                    @Html.TextBoxFor(M => M.ContactPerson2, new { @class = "form-control minw-150", @required = true, @placeholder = "Contact Person2" })
+
+                </div>
+                <label class="col-form-label col-2" for="GSTIN">GSTIN No</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.GSTIN, new { @class = "form-control minw-150", @required = true, @placeholder = "GSTIN No" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="Mobile1">Mobile1</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.Mobile1, new { @class = "form-control minw-150", @required = true, @placeholder = "Phone 1" })
+
+                </div>
+                <div class="col-2 ml-2 mr-3">
+                    @Html.TextBoxFor(M => M.Mobile2, new { @class = "form-control minw-150", @required = true, @placeholder = "Phone 2" })
+
+                </div>
+                <label class="col-form-label col-2" for="GSTIN">PAN No</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.PAN, new { @class = "form-control minw-150", @required = true, @placeholder = "PAN No" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+        <div class="col-12">
+            <div class="row form-group ">
+                <label class="col-form-label col-2" for="Email1">Email1</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.Email1, new { @class = "form-control minw-150", @required = true, @placeholder = "Email 1" })
+
+                </div>
+                <div class="col-2  ml-2 mr-3">
+                    @Html.TextBoxFor(M => M.Email2, new { @class = "form-control minw-150", @required = true, @placeholder = "Email 2" })
+
+                </div>
+                <label class="col-form-label col-2" for="Other">Other Details</label>
+                <div class="col-2">
+                    @Html.TextBoxFor(M => M.Other, new { @class = "form-control minw-150", @required = true, @placeholder = "Other Details" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-1">
+
+        <div class="col-3">
+            <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+        </div>
+    </div>
+</form>
+
+<script src="~/Assets/Scripts/WorkOrder.js"></script>

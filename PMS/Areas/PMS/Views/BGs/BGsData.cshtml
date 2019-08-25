@@ -1,0 +1,198 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblBGsData
+@{
+    ViewBag.Title = "BGsData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listBGData = listFilters.Where(filter => filter.FilterType == "TypeofBG").ToList();
+}
+
+<form id="BGsForm">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnBGsId" value="@Model.BGsId">
+    <input type="hidden" id="hdnFileName" value="@Model.FileName">
+    <input type="hidden" id="hdnFilePath" value="@Model.FilePath">
+
+    @if (Model.Id > 0)
+    {
+        <input type="hidden" id="hdnWODate" value="@(Model.WODate!=null?Model.WODate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnBGDate" value="@(Model.BGDate!=null?Model.BGDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnBGEffectiveDate" value="@(Model.BGEffectiveDate!=null?Model.BGEffectiveDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnEndDateOfClaim" value="@(Model.EndDateOfClaim!=null?Model.EndDateOfClaim.Value.ToString("yyyy-MM-dd"):"")"> 
+        <input type="hidden" id="hdnValidDate" value="@(Model.ValidDate!=null?Model.ValidDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnValidTo" value="@(Model.ValidTo!=null?Model.ValidTo.Value.ToString("yyyy-MM-dd"):"")">
+
+    }
+    <div class="row ml-4 mt-4 background">
+        <div class="col-12">
+            <div class="row form-group mt-3">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ProjectCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Project Code" })
+                </div>
+                <div class="col-6">
+                    @Html.TextBoxFor(model => model.ProjectName, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Project Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.TypeOfService, new { @class = "form-control", @required = true, @placeholder = "Type Of Service" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.WONo, new { @class = "form-control", @required = true, @placeholder = "Enter WO No" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.WODate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Enter Date / Calender" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.WOValue, new { type = "string", @class = "form-control", @required = true, @placeholder = "Rs." })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">BG Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.DropDownListFor(M => M.TypeOfBG, new SelectList(listBGData, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true, @placeholder = "BG" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Purpose, new { type = "string", @class = "form-control", @required = true, @placeholder = "Performance Security" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ReferenceContract, new { @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.NameOfBeneficiary, new { type = "string", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BGNo, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter No" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ValidDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Address, new { type = "string", @class = "form-control", @required = true, @placeholder = "Address" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BGDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ValidTo, new { type = "date", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BGValue, new { type = "string", @class = "form-control", @required = true, @placeholder = "Rs." })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BGEffectiveDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.EndDateOfClaim, new { type = "date", @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-3 font-weight-bold" for="">Issuing Bank Details</label>
+        <label class="col-form-label col-3 font-weight-bold" for="">Beneficiary Bank Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.IssuingBank, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter bank name" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BeneficiaryBank, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter bank name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.IssuingBranch, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter branch name" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BeneficiaryBranch, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter branch name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.IssuingAddress, new { type = "string", @class = "form-control", @required = true, @placeholder = "Enter Address" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.AccountNo, new { type = "string", @class = "form-control", @required = true, @placeholder = "Account No" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.IFSCCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "IFSC Code" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+                </div>
+                <div class="col-3">
+                    @if (Model.Id > 0)
+                    {
+                        <label class="col-form-label">@Model.FileName</label>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row ml-4">
+            <div class="col-12">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-3 p-1">
+                        @*<input type="submit" class="btn button" value="Back" id="" />*@
+                    </div>
+
+                    <div class="col-2">
+                        <input type="submit" class="btn button" value="Save" id="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/Assets/Scripts/BGsData.js"></script>
+
+
+

@@ -1,0 +1,89 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblVendorAllocation
+@{
+    ViewBag.Title = "Vendor Allocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listofHouse = listFilters.Where(filter => filter.FilterType == "TypeOfHouse").ToList();
+}
+
+<form id="VendorAllocationForm">
+    <div class="row ml-4 mt-4 background">
+        <div class="col-12">
+            <div class="row form-group mt-3">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.ProjectCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Project Code" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.ProjectName, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Project Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Activity, new { type = "string", @class = "form-control", @required = true, @placeholder = "Activity" })
+                </div>
+                <div class="col-4">
+                    @Html.DropDownListFor(M => M.InHouseOutSource, new SelectList(listofHouse, "FilterCode", "FilterName"), "Select Invoice", new { @class = "form-control", @required = true, @placeholder = "TypeOfHouse" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorCode, new { @class = "form-control", @required = true, @placeholder = "Vendor Code" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.VendorName, new { @class = "form-control", @required = true, @placeholder = "Vendor Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WONo, new { @class = "form-control", @required = true, @placeholder = "Work Order No." })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WODate, new { type = "date" , @class = "form-control", @required = true, @placeholder = "Work Order Date" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.WOValue, new { @class = "form-control", @required = true, @placeholder = " Enter WO Value" })
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.RevisedWOValue, new { @class = "form-control", @required = true, @placeholder = "Enter Revised WO Value" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+                </div>
+                <div class="col-1">
+                    <label class="col-form-label">@Model.FileName</label>
+                </div>
+                <div class="col-4">
+                    @Html.TextBoxFor(model => model.Amendment, new { @class = "form-control", @required = true, @placeholder = "Amendment WO" })
+                </div>
+                @*<div class="col-1 p-1">
+                    <input class="btn-width-50" type="button" value="Add" id="">
+                </div>*@
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <input type="submit" class="btn btn-primary" value="Save" id="btnSave" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

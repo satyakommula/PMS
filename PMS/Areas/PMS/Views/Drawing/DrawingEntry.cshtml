@@ -1,0 +1,169 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblDrawing
+@{
+    ViewBag.Title = "Drawings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listDepartment = listFilters.Where(filter => filter.FilterType == "Department").ToList();
+
+}
+
+<form id="DrawingForm">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnDrawingId" value="@Model.DrawingId">
+    <input type="hidden" id="hdnFileName" value="@Model.FileName">
+    <input type="hidden" id="hdnFilePath" value="@Model.FilePath">
+    <input type="hidden" id="hdnOtherFileName" value="@Model.OtherFileName">
+    <input type="hidden" id="hdnOtherFilePath" value="@Model.OtherFilePath">
+
+    @if (Model.Id > 0)
+    {
+        <input type="hidden" id="hdnDrawingDate" value="@(Model.DrawingDate!=null?Model.DrawingDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnDateOfSubmission" value="@(Model.DateOfSubmission!=null?Model.DateOfSubmission.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnOtherDate" value="@(Model.OtherDate!=null?Model.OtherDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnRevisionDate" value="@(Model.RevisionDate!=null?Model.RevisionDate.Value.ToString("yyyy-MM-dd"):"")">
+        <input type="hidden" id="hdnApprovalDate" value="@(Model.ApprovalDate!=null ?Model.ApprovalDate.Value.ToString("yyyy-MM-dd"):"")">
+    }
+    <div class="row ml-4 mt-4 background">
+        <div class="col-12">
+            <div class="row form-group mt-3">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ProjectCode, new { type = "string", @class = "form-control", @required = true, @placeholder = "Project Code" })
+                </div>
+                <div class="col-9">
+                    @Html.TextBoxFor(model => model.ProjectName, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Project Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.DrawingNo, new { @class = "form-control", @required = true, @placeholder = "Drawing No." })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.DrawingDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.DrawingTitle, new { @class = "form-control", @required = true, @placeholder = "Drawing Title" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Chainage, new { @class = "form-control", @required = true, @placeholder = "Chainage" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.DateOfSubmission, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date Of Submission" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.SubmittedTo, new { @class = "form-control", @required = true, @placeholder = "Submitted To" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.SoftHardCopy, new { @class = "form-control", @required = true, @placeholder = "Soft / Hard Copy" })
+                </div>
+                <div class="col-3">
+                    @Html.DropDownListFor(M => M.Department, new SelectList(listDepartment, "FilterCode", "FilterName"), "Select", new { @class = "form-control", @required = true, @placeholder = "" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.File, new { type = "file" })
+                </div>
+                <div class="col-3">
+                    @if (Model.Id > 0)
+                    {
+                        <label class="col-form-label">@Model.FileName</label>
+
+                    }
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">In Case</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-6">
+                    @Html.TextAreaFor(model => model.Comments, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "IE Comments" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ViaEmailLetter, new { type = "string", @class = "form-control", @required = true, @placeholder = "Vide Email/Letter" })
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.OtherDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group ">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.RevisionNo, new { @class = "form-control", @required = true, @placeholder = "RevisionNo" })
+                </div>
+                <div class="col-9" id="">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    @Html.TextBoxFor(model => model.RevisionDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "Date" })
+                                </div>
+                                <div class="col-4">
+                                    @Html.TextBoxFor(model => model.OtherSubmittedTo, new { @class = "form-control", @required = true, @placeholder = "SubmittedTo" })
+                                </div>
+                                <div class="col-4">
+                                    @Html.TextBoxFor(model => model.OtherSoftHardCopy, new { @class = "form-control", @required = true, @placeholder = "Soft / Hard Copy" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.OtherFile, new { type = "file" })
+                </div>
+                <div class="col-3">
+                    @if (Model.Id > 0)
+                    {
+                        <label class="col-form-label">@Model.OtherFileName</label>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4">
+        <div class="col-12">
+            <div class="row form-group">
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.ApprovalDate, new { type = "date", @class = "form-control", @required = true, @placeholder = "IE Approval Date" })
+                </div>
+                <div class="col-9">
+                    @Html.TextAreaFor(model => model.Remarks, new { type = "string", @class = "form-control wider", @required = true, @placeholder = "Remarks if any" })
+                </div>
+            </div>
+        </div>
+        <div class="row ml-4">
+            <div class="col-12">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-5">
+                        @*<input type="submit" class="btn button" value="Back" id="" />*@
+                    </div>
+
+                    <div class="col-2">
+                        <input type="submit" class="btn button" value="Save" id="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script src="~/Assets/Scripts/Drawing.js"></script>

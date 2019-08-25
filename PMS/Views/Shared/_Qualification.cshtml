@@ -1,0 +1,32 @@
+﻿@model tblEducation
+<div class="row divQualification mt-1">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnEductionId" value="@Model.EducationId">
+    <input type="hidden" id="hdnResumeId" value="@Model.ResumeId">
+    <div class="col-4">
+        @Html.DropDownListFor(model => model.Qualification, new SelectList(Model.ListQualifications, "FilterCode", "FilterName"), "Select", new { @class = "form-control ddlQualification", @required = true, @placeholder = "Qualification" })
+
+    </div>
+    <div class="col-4">
+        @Html.TextBoxFor(model => model.University, new { @class = "form-control txtUniversity", @required = true, @placeholder = "Institution/University" })
+
+    </div>
+    <div class="col-3">
+        @Html.TextBoxFor(model => model.Year, new { type = "number", min = "1900", max = DateTime.Now.Year, @class = "form-control txtyear", @required = true, @placeholder = "Year of completion" })
+
+    </div>
+    <div class="col-1 p-0 mt-2 text-right">
+        @{
+            if (Model.isDelete)
+            {
+                <a href="#" class="deleteQual">X</a>
+            }
+            else
+            {
+                <a href="#" class="deleteQual">&nbsp;</a>
+            }
+
+        }
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad8cec5e53264d16bff7440d8d3dfbdf" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="PMSModel.tblEducation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.tblResumeData" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.tblInwardWO" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.tblProjectMaster" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.tblFilter" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PMSModel.tblCorrespondence" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMSModel.tblDrawing" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="PMSModel.tblReport" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="PMSModel.tblOutwardWO" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="PMSModel.tblBGsData" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMSModel.tblUser" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="PMSModel.tblInvoiceConsultant" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMSModel.tblInvoiceData" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="PMSModel.tblVendorAllocation" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="PMSModel.tblVendorData" Width="1.5" PointX="15.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

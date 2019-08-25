@@ -1,0 +1,474 @@
+﻿@using PMS.Areas.PMS.Models
+@model tblVendorData
+@{
+    ViewBag.Title = "Vendor Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var listFilters = ViewBag.Filters as List<FilterEntity>;
+    var listTypeOfOwnership = listFilters.Where(filter => filter.FilterType == "TypeOfOwnership").ToList();
+}
+
+<link href="~/Assets/Styles/jquery-ui.css" rel="stylesheet" />
+<link href="~/Assets/Styles/ui.jqgrid.css" rel="stylesheet" />
+<form id="VendorForm">
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">Company Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Name of Vendor</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.VendorName, new { type = "string", @class = "form-control", @required = true, @placeholder = "Company Name" })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-10" for="">Type Of Ownership</label>
+                </div>
+                <div class="col-3">
+                    @Html.DropDownListFor(M => M.TypeOfOwnership, new SelectList(listTypeOfOwnership, "FilterCode", "FilterName"), "Select Ownership", new { @class = "form-control", @placeholder = "Select Ownership" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Address</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Address, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">City</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.City, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="">State</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.state, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Country</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Country, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="">Pin No</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.PinNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Telephone No</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.TelephoneNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="ddlBranchCode">Fax No.</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.FaxNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Website</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Website, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="">Email id</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.EmailId, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">Contact Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Authorised Representative</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.AuthorisedRepresentative, new { type = "string", @class = "form-control", @required = true, @placeholder = "Name" })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-10" for="">Alternate Contact person</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.AlternateContactPerson, new { type = "string", @class = "form-control", @required = true, @placeholder = "Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Designation</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Designation1, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-10" for="">Designation</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Designation2, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Mobile No.</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.MobileNo1, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-8" for="">Mobile No.</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.MobileNo2, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Email ID</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.EmailId1, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="">Email ID</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.EmailId2, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row form-group ml-4 mt-1">
+        <label class="col-form-label col-2" for="">Nature of Work</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Serives of vendor</label>
+            </div>
+            <div class="col-10 float-left">
+                @Html.TextBoxFor(model => model.ServicesOfVendor, new { type = "string", @class = "form-control maxw-100 float-left", @required = true })
+            </div>
+        </div>
+    </div>*@
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">Nature of Work</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Serives of vendor</label>
+                <div class="col-6">
+                    @Html.TextBoxFor(model => model.ServicesOfVendor, new { type = "string", @class = "form-control maxw-100 float-left", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-2 font-weight-bold" for="">Bank Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Vendor name as per Bank Records</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.VendorNameAsPerBak, new { type = "string", @class = "form-control", @required = true, @placeholder = "Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Bank Name</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.BankName, new { type = "string", @class = "form-control", @required = true, @placeholder = "Name" })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-2" for="">Branch</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.Branch, new { type = "string", @class = "form-control", @required = true, @placeholder = "Name" })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">IFSC Code</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.IFSCCode, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-8" for="">Account No.</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.AccountNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-8 font-weight-bold" for="">Registration Details</label>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">Pan No.</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.PanNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-10" for="">MSME No.</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.MSMENo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row form-group">
+                <label class="col-form-label col-2" for="">GST IN No</label>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.GSTINNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-10" for="">CIN No</label>
+                </div>
+                <div class="col-3">
+                    @Html.TextBoxFor(model => model.CINNo, new { type = "string", @class = "form-control", @required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-4 mt-4 background">
+        <label class="col-form-label col-10 font-weight-bold" for="">Company Documents</label>
+        @*<div class="col-12">
+            <div class="row form-group">
+                <div class="col-4">
+                    <div class="checkbox-inline">
+                        <label>
+                            @Html.CheckBox("PanCard")
+                        </label>
+                    </div>
+                    <div class="col-5 p-0">
+                        <label class="col-form-label col-2 p-0" for="">PanCard</label>
+                        @Html.TextBoxFor(model => model.AttachPanCard, new { type = "file" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-4">
+                    <div class="checkbox-inline">
+                        <label>
+                            @Html.CheckBox("PanCard")
+                        </label>
+                    </div>
+                    <div class="col-5 p-0">
+                        <label class="col-form-label col-2 p-0" for="">PanCard</label>
+                        @Html.TextBoxFor(model => model.AttachPanCard, new { type = "file" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-4">
+                    <div class="checkbox-inline">
+                        <label>
+                            @Html.CheckBox("PanCard")
+                        </label>
+                    </div>
+                    <div class="col-5 p-0">
+                        <label class="col-form-label col-2 p-0" for="">PanCard</label>
+                        @Html.TextBoxFor(model => model.AttachPanCard, new { type = "file" })
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+                        <div class="row ml-4 mt-1">
+                            <div class="col-12">
+                                <div class="row form-group">
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("PanCard")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-5 p-0">
+                                                        <label class="col-form-label col-2 p-0" for="">PanCard</label>
+                                                        @Html.TextBoxFor(model => model.AttachPanCard, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("CertificateofIncorporation")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-8 p-0">
+                                                        <label class="col-form-label col-12 p-0" for="">Certificate of Incorporation</label>
+                                                        @Html.TextBoxFor(model => model.AttachCertificateofIncorporation, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("CompanyProfile")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-8 p-0">
+                                                        <label class="col-form-label col-12 p-0" for="">Company Profile</label>
+                                                        @Html.TextBoxFor(model => model.AttachCompanyProfile, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row form-group">
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("GSTCertificate")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-8 p-0">
+                                                        <label class="col-form-label col-12 p-0" for="">GST Certificate</label>
+                                                        @Html.TextBoxFor(model => model.AttachGSTCertificate, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("CancelledCheque")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-8 p-0">
+                                                        <label class="col-form-label col-12 p-0" for="">Cancelled Cheque</label>
+                                                        @Html.TextBoxFor(model => model.AttachCancelledheque, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <div class="row form-group">
+                                                    <div class="checkbox-inline">
+                                                        <label>
+                                                            @Html.CheckBox("MSME")
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-8 p-0">
+                                                        <label class="col-form-label col-12 p-0" for="">MSME</label>
+                                                        @Html.TextBoxFor(model => model.AttachMSME, new { type = "file" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row ml-4 mt-4">
+                        <div class="col-12">
+                            <div class="row form-group">
+                                <div class="checkbox-inline">
+                                    <label>
+                                        @Html.CheckBox("PanCard")
+                                    </label>
+                                </div>
+                                <div class="col-5 p-0">
+                                    <label class="col-form-label col-2 p-0" for="">PanCard</label>
+                                    @Html.TextBoxFor(model => model.AttachPanCard, new { type = "file" })
+                                </div>
+                                <div class="col-3">
+                                    @Html.TextBoxFor(model => model.FileAttach, new { type = "file" })
+                                </div>
+                                <div class="col-3">
+                                    <label class="col-form-label col-10" for="">Vendor Code Allotted</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row ml-4 mt-4">
+                        <div class="col-12">
+                            <div class="row form-group">
+                                <label class="col-form-label col-3" for="">Upload Registration Form</label>
+                                <div class="col-3">
+                                    @Html.TextBoxFor(model => model.FileAttach, new { type = "file" })
+                                    @*<label class="col-form-label col-5" for="">Upload .pdf,.doc,.jpeg format</label>*@
+                                </div>
+                                @*<div class="col-3">
+                                    <label class="col-form-label col-10" for="">Vendor Code Allotted</label>
+                                </div>*@
+                                @*<div class="col-3">
+                                    <input type="submit" class="btn btn-primary" value="Code fill/Autofill" id="" />
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-4">
+                        <div class="col-12">
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <label class="col-form-label"></label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="col-form-label col-12" for="">Upload .pdf,.doc,.jpeg format</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-4">
+                        <div class="col-12">
+                            <div class="row form-group">
+                                <div class="col-3">
+                                    <label class="col-form-label"></label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="submit" class="btn button" value="Back" id="" />
+                                </div>
+
+                                <div class="col-3">
+                                    <input type="submit" class="btn button" value="Save" id="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</form>

@@ -1,0 +1,31 @@
+﻿@model tblEducation
+<div class="row divAddQualification">
+    <input type="hidden" id="hdnId" value="@Model.Id">
+    <input type="hidden" id="hdnEductionId" value="@Model.EducationId">
+    <input type="hidden" id="hdnResumeId" value="@Model.ResumeId">
+    <div class="col-4">
+        @Html.TextBoxFor(model => model.Course, new { @class = "form-control txtCourse",  @placeholder = "Course Name" })
+
+    </div>
+    <div class="col-4">
+        @Html.TextBoxFor(model => model.Specialisation, new { @class = "form-control txtSpec", @placeholder = "Specialisation" })
+
+    </div>
+    <div class="col-3">
+        @Html.TextBoxFor(model => model.Year, new { type = "number", min = "1900", max = DateTime.Now.Year, @class = "form-control txtYear",  @placeholder = "Year of completion" })
+    </div>
+    <div class="col-1 p-0 mt-2 text-right">
+        @{
+            if (Model.isDelete)
+            {
+                <a href="#" class="deleteAddQual">X</a>
+            }
+            else
+            {
+                <a href="#" class="deleteAddQual">&nbsp;</a>
+            }
+
+        }
+    </div>
+</div>
+
